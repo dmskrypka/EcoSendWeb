@@ -1,0 +1,40 @@
+﻿@model IList<ParcelVM>
+
+@{
+    ViewBag.Title = "My Parcels";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div id="eco-parcels">
+    <div id="eco-categories">
+        <button data-catid="0" class="cat-btn btn btn-active">FROM ME</button>
+        <button data-catid="1" class="cat-btn btn">TO ME</button>
+    </div>
+    <hr />
+    <div id="parcel-table">
+        @Html.Partial("ParcelTablePartial", new Tuple<int, IList<ParcelVM>>(0, this.Model))
+    </div>
+</div>
+
+
+@section footer {
+    @Html.Partial("FooterPartial")
+}
+
+@section scripts {
+
+    <script type="text/javascript">
+
+        require(["jquery", "site/eco.site"], function (jQuery, site) {
+            jQuery(function ($) {
+
+                var cat = new site.Categories("eco-categories");
+                cat.onChangeCategory( "parcel-table", "cat-btn", "btn-active", "@this.Url.Action("ChangeCategory", "Parcel")");
+
+            });
+        });
+
+    </script>
+
+}

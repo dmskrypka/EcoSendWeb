@@ -1,0 +1,89 @@
+﻿@model IList<ParcelVM>
+
+@{
+    ViewBag.Title = "Users Parcels";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div id="eco-parcels">
+    <div id="parcel-table">
+        @if (Model.Count > 0)
+        {
+            <table class="eco-table">
+                <colgroup>
+                    <col width="50" />
+                    <col />
+                    <col />
+                    <col width="100" />
+                    <col width="140" />
+                    <col width="140" />
+                    <col width="140" />
+                    <col width="140" />
+                    <col width="80" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(x => x[0].Id)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].SenderFullName)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].RecipientFullName)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].Price)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].CreatedDate)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].ReceivedDate)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].PaidDate)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].PackPoints)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].ConfirmedDate)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].IsRecycled)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ParcelVM parcel in Model)
+                    {
+                        string strParcelId = parcel.Id.ToString("D4");
+
+                        <tr>
+                            <td><a class="e-link-show" href="#" data-parcel="@parcel.Id" data-approved="@parcel.ConfirmedDate.HasValue" title="@strParcelId">@strParcelId</a></td>
+                            <td>@parcel.SenderFullName</td>
+                            <td>@parcel.RecipientFullName</td>
+                            <td>@String.Format("{0:#.00}", parcel.Price)</td>
+                            <td>@parcel.CreatedDate.ToString("dd-MM-yyyy HH:mm")</td>
+                            <td>@(parcel.ReceivedDate.HasValue ? parcel.ReceivedDate.Value.ToString("dd-MM-yyyy HH:mm") : "")</td>
+                            <td>@(parcel.PaidDate.HasValue ? parcel.PaidDate.Value.ToString("dd-MM-yyyy HH:mm") : "")</td>
+                            <td>@(parcel.ConfirmedDate.HasValue && parcel.IsRecycled ? parcel.PackPoints : 0)</td>
+                            <td>@(parcel.ConfirmedDate.HasValue ? "Yes" : "No")</td>
+                            <td>@(parcel.IsRecycled ? "Yes" : "No")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>
+                Users doesn't any parcels yet :(
+            </p>
+        }
+    </div>
+</div>
+
+
+@section footer {
+    @Html.Partial("FooterPartial")
+}
+
+@section scripts {
+
+    <script type="text/javascript">
+
+        require(["jquery", "site/eco.site"], function (jQuery, site) {
+            jQuery(function ($) {
+
+                var p = new site.Parcel("parcel-table");
+                p.onShowInfoManage("e-link-show", "@this.Url.Action("ShowParcelInfo", "Parcel")", "@this.Url.Action("ApproveParcel", "Parcel")");
+
+            });
+        });
+
+    </script>
+
+}

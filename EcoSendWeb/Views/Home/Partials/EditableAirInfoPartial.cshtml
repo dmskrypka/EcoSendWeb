@@ -1,0 +1,125 @@
+﻿@model AirInfoVM
+
+<div class="eco-info-edit">
+    <div class="edit-section">
+        <table class="table-bordered">
+            <colgroup>
+                <col width="100" />
+                <col />
+            </colgroup>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.PartNumber)</th>
+                <th>
+                    @if (string.IsNullOrEmpty(this.Model.PartNumber))
+                    {
+                        @Html.TextBoxFor(x => x.PartNumber, new { id = "PartNumber" });
+                    }
+                    else
+                    {
+                        <div class="eco-tooltip">
+                            @Html.TextBoxFor(x => x.PartNumber, new { id = "PartNumber", @readonly = true })
+                            <span class="eco-tooltiptext">Readonly value</span>
+                        </div>
+                    }
+                    </th>
+                </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.Description)</th>
+                <th>@Html.TextBoxFor(x => x.Description, new { id = "Description" })</th>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.MfgName)</th>
+                <th>@Html.TextBoxFor(x => x.MfgName, new { id = "MfgName" })</th>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.Segment)</th>
+                <th>@Html.TextBoxFor(x => x.Segment, new { id = "Segment" })</th>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.ATA)</th>
+                <th>@Html.TextBoxFor(x => x.ATA, new { id = "ATA" })</th>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.ABC)</th>
+                <th>@Html.TextBoxFor(x => x.ABC, new { id = "ABC" })</th>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.Mod)</th>
+                <th>@Html.DropDownListFor(x => x.Mod, this.Model.ModsList, new { id = "Mod" })</th>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.Aircraft)</th>
+                <th>@Html.TextBoxFor(x => x.Aircraft, new { id = "Aircraft" })</th>
+            </tr>
+        </table>
+    </div>
+    <div class="edit-section">
+        <table class="table-bordered">
+            <colgroup>
+                <col width="170" />
+                <col />
+            </colgroup>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.StrReparePrice)</th>
+                <th>@Html.TextBoxFor(x => x.ReparePrice, new { id = "ReparePrice", type = "number" })</th>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.StrSuggestedPurchasePrice)</th>
+                <th>@Html.TextBoxFor(x => x.SuggestedPurchasePrice, new { id = "SuggestedPurchasePrice", type = "number" })</th>
+            </tr>
+        </table>
+    </div>
+    <div class="edit-section">
+        <table class="table-bordered">
+            <colgroup>
+                <col width="130" />
+                <col />
+            </colgroup>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.TwlvMonthsTotalSales)</th>
+                <th>@Html.TextBoxFor(x => x.TwlvMonthsTotalSales, new { id = "TwlvMonthsTotalSales", type = "number" })</th>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.TwlvMonthsTotalNoBids)</th>
+                <th>@Html.TextBoxFor(x => x.TwlvMonthsTotalNoBids, new { id = "TwlvMonthsTotalNoBids", type = "number" })</th>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.TwlvMonthsTotalQuotes)</th>
+                <th>@Html.TextBoxFor(x => x.TwlvMonthsTotalQuotes, new { id = "TwlvMonthsTotalQuotes", type = "number" })</th>
+            </tr>
+        </table>
+    </div>
+    <div class="edit-section">
+        <table class="table-bordered">
+            <colgroup>
+                <col width="80" />
+                <col width="100" />
+                <col width="100" />
+                <col />
+                <col />
+            </colgroup>
+            <tr>
+                <th>CONDITION</th>
+                <th>MIN PRICE</th>
+                <th>MAX PRICE</th>
+                <th>
+                    <div class="eco-tooltip">
+                        UPDATED
+                        <span class="eco-tooltiptext">Setted on save</span>
+                    </div>
+                </th>
+                <th>COMMENT</th>
+            </tr>
+            @for (int i = 0; i < Model.Conditions.Count(); i++)
+            {
+                <tr>
+                    <th>@Enum.GetName(typeof(EcoSendWeb.Infrastructure.Defs.ConditionType), Model.Conditions.ElementAt(i).ConditionType)</th>
+                    <th>@Html.TextBoxFor(x => x.Conditions.ElementAt(i).MinPrice, new { id = String.Concat("MinPrice", i + 1), type = "number" })</th>
+                    <th>@Html.TextBoxFor(x => x.Conditions.ElementAt(i).MaxPrice, new { id = String.Concat("MktPrice", i + 1), type = "number" })</th>
+                    <th>@Model.Conditions.ElementAt(i).StrUpdated</th>
+                    <th>@Html.TextBoxFor(x => x.Conditions.ElementAt(i).Comment, new { id = String.Concat("Comment", i + 1) })</th>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

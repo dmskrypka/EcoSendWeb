@@ -1,0 +1,32 @@
+﻿@model AirInfoVM
+
+<div>
+    <div id="eco-categories">
+        @for (int i = 0; i < this.Model.CategoryNames.Count(); i++)
+        {
+            string btnStyle = "cat-btn btn";
+            if (i == 0)
+            {
+                btnStyle = btnStyle + " btn-active";
+            }
+
+            <button data-catid="@(i+1)" data-airid="@this.Model.Id" class="@btnStyle">@this.Model.CategoryNames.ElementAt(i)</button>
+        }
+    </div>
+    <div id="eco-cat-table">
+        @Html.Partial("CategoryTablePartial", this.Model.Categories.Where(x => x.CategoryType == EcoSendWeb.Infrastructure.Defs.CategoryType.sales))
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    require(["jquery", "site/eco.site"], function (jQuery, site) {
+        jQuery(function ($) {
+
+            var cat = new site.Categories("eco-categories");
+            cat.onChangeCategory( "eco-cat-table", "cat-btn", "btn-active", "@this.Url.Action("ChangeCategory", "Home")");
+
+        });
+    });
+
+</script>

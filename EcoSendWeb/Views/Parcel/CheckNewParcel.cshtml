@@ -1,0 +1,63 @@
+﻿@model Tuple<NewParcelVM, LiqPayRequestVM>
+
+@{
+    ViewBag.Title = "Send Parcel";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+
+<div class="form-horizontal">
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item1.RecipientFirstName, new { @class = "col-xs-4" })
+        @Html.DisplayFor(m => m.Item1.RecipientFirstName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item1.RecipientLastName, new { @class = "col-xs-4" })
+        @Html.DisplayFor(m => m.Item1.RecipientLastName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item1.RecipientEmail, new { @class = "col-xs-4" })
+        @Html.DisplayFor(m => m.Item1.RecipientEmail)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item1.DestStreet, new { @class = "col-xs-4" })
+        @Html.DisplayFor(m => m.Item1.DestStreet)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item1.DestCity, new { @class = "col-xs-4" })
+        @Html.DisplayFor(m => m.Item1.DestCity)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item1.DestPostalCode, new { @class = "col-xs-4" })
+        @Html.DisplayFor(m => m.Item1.DestPostalCode)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item1.DestCountry, new { @class = "col-xs-4" })
+        @Html.DisplayFor(m => m.Item1.DestCountry)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item1.PackType, new { @class = "col-xs-4" })
+        @Html.DropDownListFor(m => Model.Item1.PackType, Model.Item1.PackTypes, new { @disabled = "disabled" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item1.Points, new { @class = "col-xs-4" })
+        @Html.DisplayFor(m => m.Item1.Points)
+    </div>
+
+</div>
+
+<form method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8">
+    <input type="hidden" name="data" value="@Model.Item2.Data" />
+    <input type="hidden" name="signature" value="@Model.Item2.Signature" />
+    <input type="image" src="//static.liqpay.ua/buttons/p1en.radius.png" />
+</form>

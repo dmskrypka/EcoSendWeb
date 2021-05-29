@@ -1,0 +1,97 @@
+﻿@model Tuple<int, IList<ParcelVM>>
+
+@if (Model.Item1 == 0)
+{
+    @Html.ActionLink("SEND PARCEL", "NewParcel", "Parcel ", new { @class = "btn btn-parcel form-control" })
+}
+
+@if(Model.Item2.Count > 0)
+{
+    <table class="eco-table">
+        <colgroup>
+            <col width="50" />
+            <col />
+            <col width="100" />
+            <col width="140" />
+            <col width="140" />
+            <col width="140" />
+            <col width="140" />
+            <col width="80" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.Item2[0].Id)</th>
+                @if (Model.Item1 == 1)
+                {
+                    <th>@Html.DisplayNameFor(x => x.Item2[0].SenderFullName)</th>
+                }
+                else
+                {
+                    <th>@Html.DisplayNameFor(x => x.Item2[0].RecipientFullName)</th>
+                }
+                <th>@Html.DisplayNameFor(x => x.Item2[0].Price)</th>
+                <th>@Html.DisplayNameFor(x => x.Item2[0].CreatedDate)</th>
+                <th>@Html.DisplayNameFor(x => x.Item2[0].ReceivedDate)</th>
+                @if (Model.Item1 == 1)
+                {
+                    <th>@Html.DisplayNameFor(x => x.Item2[0].PackPoints)</th>
+                    <th>@Html.DisplayNameFor(x => x.Item2[0].ConfirmedDate)</th>
+                }
+                else
+                {
+                    <th>@Html.DisplayNameFor(x => x.Item2[0].PaidDate)</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ParcelVM parcel in Model.Item2)
+            {
+                string strParcelId = parcel.Id.ToString("D4");
+
+                <tr>
+                    <td><a class="e-link-show" href="#" data-parcel="@parcel.Id" data-cat="@Model.Item1" data-received="@parcel.ReceivedDate.HasValue" title="@strParcelId">@strParcelId</a></td>
+                    @if (Model.Item1 == 1)
+                    {
+                        <td>@parcel.SenderFullName</td>
+                    }
+                    else
+                    {
+                        <td>@parcel.RecipientFullName</td>
+                    }
+                    <td>@String.Format("{0:#.00}", parcel.Price)</td>
+                    <td>@parcel.CreatedDate.ToString("dd-MM-yyyy HH:mm")</td>
+                    <td>@(parcel.ReceivedDate.HasValue ? parcel.ReceivedDate.Value.ToString("dd-MM-yyyy HH:mm") : "")</td>
+                    @if (Model.Item1 == 1)
+                    {
+                        <td>@(parcel.ConfirmedDate.HasValue && parcel.IsRecycled ? parcel.PackPoints : 0)</td>
+                        <td>@(parcel.ConfirmedDate.HasValue ? "Yes" : "No")</td>
+                    }
+                    else
+                    {
+                        <td>@parcel.PaidDate</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>
+        You don't @(Model.Item1 == 1 ? "receive" : "send") any parcels yet :(
+    </p>
+}
+
+<script type="text/javascript">
+
+        require(["jquery", "site/eco.site"], function (jQuery, site) {
+            jQuery(function ($) {
+
+                var p = new site.Parcel("parcel-table");
+                p.onShowInfo("e-link-show", "@this.Url.Action("ShowParcelInfo", "Parcel")", "@this.Url.Action("ReceiveParcel", "Parcel")");
+                //p.onSendParcel("btn-parcel-send", "@this.Url.Action("NewParcel", "Parcel")", "@this.Url.Action("SaveParcel", "Parcel")");
+
+            });
+        });
+
+</script>

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ConditionVM>
+
+<div>
+    <div id="chartdiv" style="width: 100%; height: 320px;">
+    </div>
+    @*<!--CanvasJS-->
+        <div id="chartContainer" style="height: 320px; width: 100%;"></div>*@
+    <div id="eco-div-conditions-history">
+        <table class="table-bordered eco-table-category-header">
+            <colgroup>
+                <col width="100" />
+                <col width="100" />
+                <col width="160" />
+                <col />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>MIN PRICE</th>
+                    <th>MAX PRICE</th>
+                    <th>
+                        <div class="eco-tooltip">
+                            UPDATED
+                            <span class="eco-tooltiptext">Setted on save</span>
+                        </div>
+                    </th>
+                    <th>COMMENT</th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="eco-scrollbar">
+            <table class="table-bordered eco-table-category-content">
+                <colgroup>
+                    <col width="100" />
+                    <col width="100" />
+                    <col width="160" />
+                    <col />
+                </colgroup>
+                @foreach (ConditionVM c in Model)
+                {
+                    <tr>
+                        <th>@c.StrMinPrice</th>
+                        <th>@c.StrMaxPrice</th>
+                        <th>@c.StrUpdated</th>
+                        <th>@c.Comment</th>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    require(["jquery"], function (jQuery) {
+        jQuery(function ($) {
+            google.charts.load("current", {packages:["corechart", "line"]});
+            google.charts.setOnLoadCallback(drawChart);
+    
+            function drawChart() {
+                var jsonData = $.ajax({
+                    url: '@Url.Action("GetConditionHistoryChartData", "Home")',
+                    dataType: "json",
+                    async: false
+                }).responseText;
+    
+                setTimeout(function(){
+                    // Create our data table out of JSON data loaded from server.
+                    var data = new google.visualization.DataTable(jsonData);
+    
+                    var options = {
+                        width: 750,
+                        height: 300
+                    };
+    
+                    // Instantiate and draw our chart, passing in some options.
+                    var chart = new google.charts.Line(document.getElementById('chartdiv'));
+                    chart.draw(data, google.charts.Line.convertOptions(options));
+    
+                }, 200);
+            }
+        });
+    });
+</script>

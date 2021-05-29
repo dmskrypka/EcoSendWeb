@@ -1,0 +1,66 @@
+﻿@model IEnumerable<RegisteredPersonVM>
+
+<div id="reg-person-list">
+    <table class="table-bordered">
+        <colgroup>
+            <col />
+            <col width="160" />
+            <col width="100" />
+            <col width="100" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.Email)</th>
+                <th>@Html.DisplayNameFor(x => x.StrRegistrationDate)</th>
+                <th>@Html.DisplayNameFor(x => x.IsValid)</th>
+                <th>@Html.DisplayNameFor(x => x.IsAdmin)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (RegisteredPersonVM vm in this.Model)
+            {
+                <tr class="eco-data-row" data-id="@vm.Id">
+                    <td>@vm.Email</td>
+                    <td>@vm.StrRegistrationDate</td>
+                    @if (vm.IsAdmin)
+                    {
+                        <td>@vm.IsValid</td>
+                    }
+                    else
+                    {
+                        <td>
+                            @*TODO: write with ValidList*@
+                            <select class="valid-selector" name="IsValidList">
+                                @if (vm.IsValid)
+                                {
+                                    <option selected>True</option>
+                                    <option>False</option>
+                                }
+                                else
+                                {
+                                    <option>True</option>
+                                    <option selected>False</option>
+                                }
+                            </select>
+                        </td>
+                    }
+                    <td>@vm.IsAdmin</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+
+    require(["jquery", "site/eco.site"], function (jQuery, site) {
+        jQuery(function ($) {
+
+            var ac = new site.Account("reg-person-list");
+            ac.onValidationChange("eco-data-row", "valid-selector", "@this.Url.Action("ChangePersonValidation", "Account")");
+
+        });
+    });
+
+</script>
+

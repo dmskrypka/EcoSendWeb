@@ -1,0 +1,72 @@
+﻿@model IList<MovementVM>
+
+@{
+    ViewBag.Title = "Users Movements";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div id="eco-parcels">
+    <div id="parcel-table">
+        @if (Model.Count > 0)
+        {
+            <table class="eco-table">
+                <colgroup>
+                    <col width="100" />
+                    <col />
+                    <col width="100" />
+                    <col width="140" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(x => x[0].ParcelId)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].PackName)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].Points)</th>
+                        <th>@Html.DisplayNameFor(x => x[0].CreatedDate)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (MovementVM movement in Model)
+                    {
+                        string strParcelId = movement.ParcelId.ToString("D4");
+
+                        <tr>
+                            <td><a class="e-link-show" href="#" data-parcel="@movement.ParcelId" title="@strParcelId">@strParcelId</a></td>
+                            <td>@movement.PackName</td>
+                            <td>@movement.Points</td>
+                            <td>@movement.CreatedDate.ToString("dd-MM-yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>
+                Users doesn't any parcels yet :(
+            </p>
+        }
+    </div>
+</div>
+
+
+@section footer {
+    @Html.Partial("FooterPartial")
+}
+
+@section scripts {
+
+    <script type="text/javascript">
+
+        require(["jquery", "site/eco.site"], function (jQuery, site) {
+            jQuery(function ($) {
+
+                var p = new site.Parcel("parcel-table");
+                p.onShowInfo("e-link-show", "@this.Url.Action("ShowParcelInfo", "Parcel")", "");
+
+            });
+        });
+
+    </script>
+
+}

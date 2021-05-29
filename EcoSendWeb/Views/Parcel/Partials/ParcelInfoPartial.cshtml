@@ -1,0 +1,73 @@
+﻿@model ParcelVM
+
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(m => m.Id, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.Id)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SenderFullName, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.SenderFullName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.Price)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PackType, new { @class = "col-xs-3" })
+        @Html.DropDownListFor(x => Model.PackType, Model.PackTypes, new { @disabled = "disabled" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CreatedDate, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.CreatedDate)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RecipientFullName, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.RecipientFullName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DestStreet, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.DestStreet)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DestCity, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.DestCity)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DestPostalCode, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.DestPostalCode)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DestCountry, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.DestCountry)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ReceivedDate, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.ReceivedDate)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PaidDate, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.PaidDate)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmedDate, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.ConfirmedDate.HasValue)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.IsRecycled, new { @class = "col-xs-3" })
+        @Html.DisplayFor(m => m.IsRecycled)
+    </div>
+</div>

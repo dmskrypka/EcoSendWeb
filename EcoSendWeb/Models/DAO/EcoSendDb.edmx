@@ -1,0 +1,727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EcoSendModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblPacks">
+          <Key>
+            <PropertyRef Name="pk_pack" />
+          </Key>
+          <Property Name="pk_pack" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="points" Type="int" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblParcels">
+          <Key>
+            <PropertyRef Name="pk_parcel" />
+          </Key>
+          <Property Name="pk_parcel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_pack" Type="int" Nullable="false" />
+          <Property Name="fk_sender" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_recipient" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="destination_city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="destination_street" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="destination_postal_code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="destination_country" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="confirmed_date" Type="datetime" />
+          <Property Name="fk_employee" Type="uniqueidentifier" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="is_pack_recycled" Type="bit" Nullable="false" />
+          <Property Name="received_date" Type="datetime" />
+          <Property Name="paid_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblPayments">
+          <Key>
+            <PropertyRef Name="pk_payment" />
+          </Key>
+          <Property Name="pk_payment" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_user" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_parcel" Type="int" Nullable="false" />
+          <Property Name="amount" Type="money" Nullable="false" />
+          <Property Name="success" Type="bit" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="result_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblRecipients">
+          <Key>
+            <PropertyRef Name="pk_recipient" />
+          </Key>
+          <Property Name="pk_recipient" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="250" />
+          <Property Name="fk_user" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="tblUserMovements">
+          <Key>
+            <PropertyRef Name="fk_user" />
+            <PropertyRef Name="fk_parcel" />
+          </Key>
+          <Property Name="fk_user" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_parcel" Type="int" Nullable="false" />
+          <Property Name="points" Type="int" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUserRoles">
+          <Key>
+            <PropertyRef Name="pk_role" />
+          </Key>
+          <Property Name="pk_role" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUsers">
+          <Key>
+            <PropertyRef Name="pk_user" />
+          </Key>
+          <Property Name="pk_user" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="250" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password_hash" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" />
+          <Property Name="street" Type="nvarchar" MaxLength="250" />
+          <Property Name="postal_code" Type="nvarchar" MaxLength="10" />
+          <Property Name="pasport" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="last_login" Type="datetime" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="modified_date" Type="datetime" />
+          <Property Name="deleted_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblUserToRoles">
+          <Key>
+            <PropertyRef Name="pk_map" />
+          </Key>
+          <Property Name="pk_map" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_user" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_role" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblParcels_tblPacks">
+          <End Role="tblPacks" Type="Self.tblPacks" Multiplicity="1" />
+          <End Role="tblParcels" Type="Self.tblParcels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPacks">
+              <PropertyRef Name="pk_pack" />
+            </Principal>
+            <Dependent Role="tblParcels">
+              <PropertyRef Name="fk_pack" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblParcels_tblRecipients">
+          <End Role="tblRecipients" Type="Self.tblRecipients" Multiplicity="1" />
+          <End Role="tblParcels" Type="Self.tblParcels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRecipients">
+              <PropertyRef Name="pk_recipient" />
+            </Principal>
+            <Dependent Role="tblParcels">
+              <PropertyRef Name="fk_recipient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblParcels_tblUsers">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+          <End Role="tblParcels" Type="Self.tblParcels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblParcels">
+              <PropertyRef Name="fk_sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblParcels_tblUsers1">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblParcels" Type="Self.tblParcels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblParcels">
+              <PropertyRef Name="fk_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPayments_tblParcels">
+          <End Role="tblParcels" Type="Self.tblParcels" Multiplicity="1" />
+          <End Role="tblPayments" Type="Self.tblPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblParcels">
+              <PropertyRef Name="pk_parcel" />
+            </Principal>
+            <Dependent Role="tblPayments">
+              <PropertyRef Name="fk_parcel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPayments_tblUsers">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+          <End Role="tblPayments" Type="Self.tblPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblPayments">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRecipients_tblUsers">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblRecipients" Type="Self.tblRecipients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblRecipients">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserMovements_tblParcels">
+          <End Role="tblParcels" Type="Self.tblParcels" Multiplicity="1" />
+          <End Role="tblUserMovements" Type="Self.tblUserMovements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblParcels">
+              <PropertyRef Name="pk_parcel" />
+            </Principal>
+            <Dependent Role="tblUserMovements">
+              <PropertyRef Name="fk_parcel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserMovements_tblUsers">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+          <End Role="tblUserMovements" Type="Self.tblUserMovements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblUserMovements">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserToRoles_tblUserRoles">
+          <End Role="tblUserRoles" Type="Self.tblUserRoles" Multiplicity="1" />
+          <End Role="tblUserToRoles" Type="Self.tblUserToRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRoles">
+              <PropertyRef Name="pk_role" />
+            </Principal>
+            <Dependent Role="tblUserToRoles">
+              <PropertyRef Name="fk_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserToRoles_tblUsers">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+          <End Role="tblUserToRoles" Type="Self.tblUserToRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblUserToRoles">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EcoSendModelStoreContainer">
+          <EntitySet Name="tblPacks" EntityType="Self.tblPacks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblParcels" EntityType="Self.tblParcels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPayments" EntityType="Self.tblPayments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRecipients" EntityType="Self.tblRecipients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserMovements" EntityType="Self.tblUserMovements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRoles" EntityType="Self.tblUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserToRoles" EntityType="Self.tblUserToRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblParcels_tblPacks" Association="Self.FK_tblParcels_tblPacks">
+            <End Role="tblPacks" EntitySet="tblPacks" />
+            <End Role="tblParcels" EntitySet="tblParcels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblParcels_tblRecipients" Association="Self.FK_tblParcels_tblRecipients">
+            <End Role="tblRecipients" EntitySet="tblRecipients" />
+            <End Role="tblParcels" EntitySet="tblParcels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblParcels_tblUsers" Association="Self.FK_tblParcels_tblUsers">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblParcels" EntitySet="tblParcels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblParcels_tblUsers1" Association="Self.FK_tblParcels_tblUsers1">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblParcels" EntitySet="tblParcels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPayments_tblParcels" Association="Self.FK_tblPayments_tblParcels">
+            <End Role="tblParcels" EntitySet="tblParcels" />
+            <End Role="tblPayments" EntitySet="tblPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPayments_tblUsers" Association="Self.FK_tblPayments_tblUsers">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblPayments" EntitySet="tblPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRecipients_tblUsers" Association="Self.FK_tblRecipients_tblUsers">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblRecipients" EntitySet="tblRecipients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserMovements_tblParcels" Association="Self.FK_tblUserMovements_tblParcels">
+            <End Role="tblParcels" EntitySet="tblParcels" />
+            <End Role="tblUserMovements" EntitySet="tblUserMovements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserMovements_tblUsers" Association="Self.FK_tblUserMovements_tblUsers">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserMovements" EntitySet="tblUserMovements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserToRoles_tblUserRoles" Association="Self.FK_tblUserToRoles_tblUserRoles">
+            <End Role="tblUserRoles" EntitySet="tblUserRoles" />
+            <End Role="tblUserToRoles" EntitySet="tblUserToRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserToRoles_tblUsers" Association="Self.FK_tblUserToRoles_tblUsers">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserToRoles" EntitySet="tblUserToRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EcoSendModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EcoSendEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblUserRoles" EntityType="EcoSendModel.tblUserRole" />
+          <EntitySet Name="tblUserToRoles" EntityType="EcoSendModel.tblUserToRole" />
+          <AssociationSet Name="FK_tblUserToRoles_tblUserRoles" Association="EcoSendModel.FK_tblUserToRoles_tblUserRoles">
+            <End Role="tblUserRole" EntitySet="tblUserRoles" />
+            <End Role="tblUserToRole" EntitySet="tblUserToRoles" />
+          </AssociationSet>
+          <EntitySet Name="tblRecipients" EntityType="EcoSendModel.tblRecipient" />
+          <EntitySet Name="tblPacks" EntityType="EcoSendModel.tblPack" />
+          <EntitySet Name="tblUserMovements" EntityType="EcoSendModel.tblUserMovement" />
+          <EntitySet Name="tblUsers" EntityType="EcoSendModel.tblUser" />
+          <AssociationSet Name="FK_tblRecipients_tblUsers" Association="EcoSendModel.FK_tblRecipients_tblUsers">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblRecipient" EntitySet="tblRecipients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserMovements_tblUsers" Association="EcoSendModel.FK_tblUserMovements_tblUsers">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblUserMovement" EntitySet="tblUserMovements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserToRoles_tblUsers" Association="EcoSendModel.FK_tblUserToRoles_tblUsers">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblUserToRole" EntitySet="tblUserToRoles" />
+          </AssociationSet>
+          <EntitySet Name="tblParcels" EntityType="EcoSendModel.tblParcel" />
+          <AssociationSet Name="FK_tblParcels_tblPacks" Association="EcoSendModel.FK_tblParcels_tblPacks">
+            <End Role="tblPack" EntitySet="tblPacks" />
+            <End Role="tblParcel" EntitySet="tblParcels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblParcels_tblRecipients" Association="EcoSendModel.FK_tblParcels_tblRecipients">
+            <End Role="tblRecipient" EntitySet="tblRecipients" />
+            <End Role="tblParcel" EntitySet="tblParcels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblParcels_tblUsers" Association="EcoSendModel.FK_tblParcels_tblUsers">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblParcel" EntitySet="tblParcels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblParcels_tblUsers1" Association="EcoSendModel.FK_tblParcels_tblUsers1">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblParcel" EntitySet="tblParcels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserMovements_tblParcels" Association="EcoSendModel.FK_tblUserMovements_tblParcels">
+            <End Role="tblParcel" EntitySet="tblParcels" />
+            <End Role="tblUserMovement" EntitySet="tblUserMovements" />
+          </AssociationSet>
+          <EntitySet Name="tblPayments" EntityType="EcoSendModel.tblPayment" />
+          <AssociationSet Name="FK_tblPayments_tblParcels" Association="EcoSendModel.FK_tblPayments_tblParcels">
+            <End Role="tblParcel" EntitySet="tblParcels" />
+            <End Role="tblPayment" EntitySet="tblPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPayments_tblUsers" Association="EcoSendModel.FK_tblPayments_tblUsers">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblPayment" EntitySet="tblPayments" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="pk_role" />
+          </Key>
+          <Property Name="pk_role" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblUserToRoles" Relationship="EcoSendModel.FK_tblUserToRoles_tblUserRoles" FromRole="tblUserRole" ToRole="tblUserToRole" />
+        </EntityType>
+        <EntityType Name="tblUserToRole">
+          <Key>
+            <PropertyRef Name="pk_map" />
+          </Key>
+          <Property Name="pk_map" Type="Guid" Nullable="false" />
+          <Property Name="fk_user" Type="Guid" Nullable="false" />
+          <Property Name="fk_role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblUserRole" Relationship="EcoSendModel.FK_tblUserToRoles_tblUserRoles" FromRole="tblUserToRole" ToRole="tblUserRole" />
+          <NavigationProperty Name="tblUser" Relationship="EcoSendModel.FK_tblUserToRoles_tblUsers" FromRole="tblUserToRole" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_tblUserToRoles_tblUserRoles">
+          <End Type="EcoSendModel.tblUserRole" Role="tblUserRole" Multiplicity="1" />
+          <End Type="EcoSendModel.tblUserToRole" Role="tblUserToRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserRole">
+              <PropertyRef Name="pk_role" />
+            </Principal>
+            <Dependent Role="tblUserToRole">
+              <PropertyRef Name="fk_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblRecipient">
+          <Key>
+            <PropertyRef Name="pk_recipient" />
+          </Key>
+          <Property Name="pk_recipient" Type="Guid" Nullable="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="fk_user" Type="Guid" />
+          <NavigationProperty Name="tblUser" Relationship="EcoSendModel.FK_tblRecipients_tblUsers" FromRole="tblRecipient" ToRole="tblUser" />
+          <NavigationProperty Name="tblParcels" Relationship="EcoSendModel.FK_tblParcels_tblRecipients" FromRole="tblRecipient" ToRole="tblParcel" />
+        </EntityType>
+        <EntityType Name="tblPack">
+          <Key>
+            <PropertyRef Name="pk_pack" />
+          </Key>
+          <Property Name="pk_pack" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="points" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="tblParcels" Relationship="EcoSendModel.FK_tblParcels_tblPacks" FromRole="tblPack" ToRole="tblParcel" />
+        </EntityType>
+        <EntityType Name="tblUserMovement">
+          <Key>
+            <PropertyRef Name="fk_user" />
+            <PropertyRef Name="fk_parcel" />
+          </Key>
+          <Property Name="fk_user" Type="Guid" Nullable="false" />
+          <Property Name="fk_parcel" Type="Int32" Nullable="false" />
+          <Property Name="points" Type="Int32" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblUser" Relationship="EcoSendModel.FK_tblUserMovements_tblUsers" FromRole="tblUserMovement" ToRole="tblUser" />
+          <NavigationProperty Name="tblParcel" Relationship="EcoSendModel.FK_tblUserMovements_tblParcels" FromRole="tblUserMovement" ToRole="tblParcel" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="pk_user" />
+          </Key>
+          <Property Name="pk_user" Type="Guid" Nullable="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password_hash" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="postal_code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="pasport" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="last_login" Type="DateTime" Precision="3" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modified_date" Type="DateTime" Precision="3" />
+          <Property Name="deleted_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblRecipients" Relationship="EcoSendModel.FK_tblRecipients_tblUsers" FromRole="tblUser" ToRole="tblRecipient" />
+          <NavigationProperty Name="tblUserMovements" Relationship="EcoSendModel.FK_tblUserMovements_tblUsers" FromRole="tblUser" ToRole="tblUserMovement" />
+          <NavigationProperty Name="tblUserToRoles" Relationship="EcoSendModel.FK_tblUserToRoles_tblUsers" FromRole="tblUser" ToRole="tblUserToRole" />
+          <NavigationProperty Name="tblParcels" Relationship="EcoSendModel.FK_tblParcels_tblUsers" FromRole="tblUser" ToRole="tblParcel" />
+          <NavigationProperty Name="tblParcels1" Relationship="EcoSendModel.FK_tblParcels_tblUsers1" FromRole="tblUser" ToRole="tblParcel" />
+          <NavigationProperty Name="tblPayments" Relationship="EcoSendModel.FK_tblPayments_tblUsers" FromRole="tblUser" ToRole="tblPayment" />
+        </EntityType>
+        <Association Name="FK_tblRecipients_tblUsers">
+          <End Type="EcoSendModel.tblUser" Role="tblUser" Multiplicity="0..1" />
+          <End Type="EcoSendModel.tblRecipient" Role="tblRecipient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblRecipient">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserMovements_tblUsers">
+          <End Type="EcoSendModel.tblUser" Role="tblUser" Multiplicity="1" />
+          <End Type="EcoSendModel.tblUserMovement" Role="tblUserMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblUserMovement">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserToRoles_tblUsers">
+          <End Type="EcoSendModel.tblUser" Role="tblUser" Multiplicity="1" />
+          <End Type="EcoSendModel.tblUserToRole" Role="tblUserToRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblUserToRole">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblParcel">
+          <Key>
+            <PropertyRef Name="pk_parcel" />
+          </Key>
+          <Property Name="pk_parcel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_pack" Type="Int32" Nullable="false" />
+          <Property Name="fk_sender" Type="Guid" Nullable="false" />
+          <Property Name="fk_recipient" Type="Guid" Nullable="false" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="destination_city" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="destination_street" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="destination_postal_code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="destination_country" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="confirmed_date" Type="DateTime" Precision="3" />
+          <Property Name="fk_employee" Type="Guid" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="is_pack_recycled" Type="Boolean" Nullable="false" />
+          <Property Name="received_date" Type="DateTime" Precision="3" />
+          <Property Name="paid_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblPack" Relationship="EcoSendModel.FK_tblParcels_tblPacks" FromRole="tblParcel" ToRole="tblPack" />
+          <NavigationProperty Name="tblRecipient" Relationship="EcoSendModel.FK_tblParcels_tblRecipients" FromRole="tblParcel" ToRole="tblRecipient" />
+          <NavigationProperty Name="tblUser" Relationship="EcoSendModel.FK_tblParcels_tblUsers" FromRole="tblParcel" ToRole="tblUser" />
+          <NavigationProperty Name="tblUser1" Relationship="EcoSendModel.FK_tblParcels_tblUsers1" FromRole="tblParcel" ToRole="tblUser" />
+          <NavigationProperty Name="tblUserMovements" Relationship="EcoSendModel.FK_tblUserMovements_tblParcels" FromRole="tblParcel" ToRole="tblUserMovement" />
+          <NavigationProperty Name="tblPayments" Relationship="EcoSendModel.FK_tblPayments_tblParcels" FromRole="tblParcel" ToRole="tblPayment" />
+        </EntityType>
+        <Association Name="FK_tblParcels_tblPacks">
+          <End Type="EcoSendModel.tblPack" Role="tblPack" Multiplicity="1" />
+          <End Type="EcoSendModel.tblParcel" Role="tblParcel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPack">
+              <PropertyRef Name="pk_pack" />
+            </Principal>
+            <Dependent Role="tblParcel">
+              <PropertyRef Name="fk_pack" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblParcels_tblRecipients">
+          <End Type="EcoSendModel.tblRecipient" Role="tblRecipient" Multiplicity="1" />
+          <End Type="EcoSendModel.tblParcel" Role="tblParcel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRecipient">
+              <PropertyRef Name="pk_recipient" />
+            </Principal>
+            <Dependent Role="tblParcel">
+              <PropertyRef Name="fk_recipient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblParcels_tblUsers">
+          <End Type="EcoSendModel.tblUser" Role="tblUser" Multiplicity="1" />
+          <End Type="EcoSendModel.tblParcel" Role="tblParcel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblParcel">
+              <PropertyRef Name="fk_sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblParcels_tblUsers1">
+          <End Type="EcoSendModel.tblUser" Role="tblUser" Multiplicity="0..1" />
+          <End Type="EcoSendModel.tblParcel" Role="tblParcel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblParcel">
+              <PropertyRef Name="fk_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserMovements_tblParcels">
+          <End Type="EcoSendModel.tblParcel" Role="tblParcel" Multiplicity="1" />
+          <End Type="EcoSendModel.tblUserMovement" Role="tblUserMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblParcel">
+              <PropertyRef Name="pk_parcel" />
+            </Principal>
+            <Dependent Role="tblUserMovement">
+              <PropertyRef Name="fk_parcel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="pk_payment" />
+          </Key>
+          <Property Name="pk_payment" Type="Guid" Nullable="false" />
+          <Property Name="fk_user" Type="Guid" Nullable="false" />
+          <Property Name="fk_parcel" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="success" Type="Boolean" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="result_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblParcel" Relationship="EcoSendModel.FK_tblPayments_tblParcels" FromRole="tblPayment" ToRole="tblParcel" />
+          <NavigationProperty Name="tblUser" Relationship="EcoSendModel.FK_tblPayments_tblUsers" FromRole="tblPayment" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_tblPayments_tblParcels">
+          <End Type="EcoSendModel.tblParcel" Role="tblParcel" Multiplicity="1" />
+          <End Type="EcoSendModel.tblPayment" Role="tblPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblParcel">
+              <PropertyRef Name="pk_parcel" />
+            </Principal>
+            <Dependent Role="tblPayment">
+              <PropertyRef Name="fk_parcel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPayments_tblUsers">
+          <End Type="EcoSendModel.tblUser" Role="tblUser" Multiplicity="1" />
+          <End Type="EcoSendModel.tblPayment" Role="tblPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblPayment">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EcoSendModelStoreContainer" CdmEntityContainer="EcoSendEntities">
+          <EntitySetMapping Name="tblUserRoles">
+            <EntityTypeMapping TypeName="EcoSendModel.tblUserRole">
+              <MappingFragment StoreEntitySet="tblUserRoles">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pk_role" ColumnName="pk_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserToRoles">
+            <EntityTypeMapping TypeName="EcoSendModel.tblUserToRole">
+              <MappingFragment StoreEntitySet="tblUserToRoles">
+                <ScalarProperty Name="fk_role" ColumnName="fk_role" />
+                <ScalarProperty Name="fk_user" ColumnName="fk_user" />
+                <ScalarProperty Name="pk_map" ColumnName="pk_map" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRecipients">
+            <EntityTypeMapping TypeName="EcoSendModel.tblRecipient">
+              <MappingFragment StoreEntitySet="tblRecipients">
+                <ScalarProperty Name="fk_user" ColumnName="fk_user" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="pk_recipient" ColumnName="pk_recipient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPacks">
+            <EntityTypeMapping TypeName="EcoSendModel.tblPack">
+              <MappingFragment StoreEntitySet="tblPacks">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pk_pack" ColumnName="pk_pack" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserMovements">
+            <EntityTypeMapping TypeName="EcoSendModel.tblUserMovement">
+              <MappingFragment StoreEntitySet="tblUserMovements">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="fk_parcel" ColumnName="fk_parcel" />
+                <ScalarProperty Name="fk_user" ColumnName="fk_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="EcoSendModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUsers">
+                <ScalarProperty Name="deleted_date" ColumnName="deleted_date" />
+                <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="last_login" ColumnName="last_login" />
+                <ScalarProperty Name="pasport" ColumnName="pasport" />
+                <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="password_hash" ColumnName="password_hash" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="pk_user" ColumnName="pk_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblParcels">
+            <EntityTypeMapping TypeName="EcoSendModel.tblParcel">
+              <MappingFragment StoreEntitySet="tblParcels">
+                <ScalarProperty Name="paid_date" ColumnName="paid_date" />
+                <ScalarProperty Name="received_date" ColumnName="received_date" />
+                <ScalarProperty Name="is_pack_recycled" ColumnName="is_pack_recycled" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="fk_employee" ColumnName="fk_employee" />
+                <ScalarProperty Name="confirmed_date" ColumnName="confirmed_date" />
+                <ScalarProperty Name="destination_country" ColumnName="destination_country" />
+                <ScalarProperty Name="destination_postal_code" ColumnName="destination_postal_code" />
+                <ScalarProperty Name="destination_street" ColumnName="destination_street" />
+                <ScalarProperty Name="destination_city" ColumnName="destination_city" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="fk_recipient" ColumnName="fk_recipient" />
+                <ScalarProperty Name="fk_sender" ColumnName="fk_sender" />
+                <ScalarProperty Name="fk_pack" ColumnName="fk_pack" />
+                <ScalarProperty Name="pk_parcel" ColumnName="pk_parcel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPayments">
+            <EntityTypeMapping TypeName="EcoSendModel.tblPayment">
+              <MappingFragment StoreEntitySet="tblPayments">
+                <ScalarProperty Name="result_date" ColumnName="result_date" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="success" ColumnName="success" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="fk_parcel" ColumnName="fk_parcel" />
+                <ScalarProperty Name="fk_user" ColumnName="fk_user" />
+                <ScalarProperty Name="pk_payment" ColumnName="pk_payment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

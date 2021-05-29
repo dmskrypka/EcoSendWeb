@@ -1,0 +1,1141 @@
+﻿@font-face {
+  font-family: "ArtBrush";
+  src: url('../../fonts/Artbrush.eot');
+  src: url('../../fonts/Artbrush.eot#iefix') format('embedded-opentype'), url('../../fonts/Artbrush.woff2') format('woff2'), url('../../fonts/Artbrush.woff') format('woff'), url('../../fonts/Artbrush.ttf') format('truetype'), url('../../fonts/Artbrush.svg#ArtBrush') format('svg');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}
+body {
+  background-color: #FFFFFF;
+  min-height: 764px;
+  font-family: 'Roboto', sans-serif;
+  /* width */
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+body ::-webkit-scrollbar {
+  width: 10px;
+}
+body ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+body ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+body ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.eco-nav-menu .eco-brand {
+  height: auto;
+}
+.eco-nav-menu .eco-brand img.eco-logo {
+  float: left;
+  height: 50px;
+}
+.eco-nav-menu .eco-brand span.navbar-brand {
+  margin-left: 0;
+}
+.eco-nav-menu .eco-brand span.navbar-brand:hover {
+  color: #60C505;
+}
+.eco-nav-menu ul {
+  float: none;
+}
+.eco-nav-menu ul li a:hover {
+  color: #60C505 !important;
+}
+.eco-nav-menu ul li.eco-autorize-menu {
+  float: right;
+}
+@media screen and (max-width: 767px) {
+  .eco-nav-menu ul li.eco-autorize-menu {
+    float: none;
+  }
+}
+.eco-nav-menu ul li.eco-autorize-menu .eco-menu-points {
+  float: left;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #9D9D9D;
+}
+.eco-nav-menu ul li.eco-autorize-menu .eco-menu-user {
+  float: right;
+}
+@media screen and (max-width: 767px) {
+  .eco-nav-menu ul li.eco-autorize-menu .eco-menu-user {
+    float: none;
+  }
+}
+#wrapper {
+  margin-top: 60px;
+}
+@media screen and (max-width: 991px) {
+  #wrapper > .container {
+    background: none;
+  }
+}
+#wrapper > .container .renderbody {
+  clear: both;
+  padding-top: 6px;
+}
+#wrapper > .container .eco-claim {
+  top: 100px;
+  position: absolute;
+  margin-left: 560px;
+}
+#wrapper > .container .eco-motto {
+  color: #FFFFFF;
+  font-weight: bold;
+  line-height: 130%;
+  text-shadow: 1px 1px 0 #780026, -1px -1px 0 #780026, 1px -1px 0 #780026, -1px 1px 0 #780026, 1px 1px 7px #780026;
+  font-style: italic;
+  font-size: 60px;
+  padding-left: 30px;
+  width: 350px;
+}
+@media screen and (max-width: 991px) {
+  #wrapper > .container .eco-motto {
+    display: none;
+  }
+}
+#wrapper > .container .eco-motto-price {
+  color: #FFFFFF;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #780026, -1px -1px 0 #780026, 1px -1px 0 #780026, -1px 1px 0 #780026, 1px 1px 7px #780026;
+  font-size: 33px;
+  padding-left: 30px;
+  width: 350px;
+}
+@media screen and (max-width: 991px) {
+  #wrapper > .container .eco-motto-price {
+    display: none;
+  }
+}
+#wrapper > .container .eco-losovacka {
+  border: 2px solid #000000;
+  border-radius: 20px;
+  background-color: white;
+  padding: 8px;
+  font-size: 18px;
+  margin-top: 20px;
+  width: 260px;
+  margin-left: 50px;
+}
+@media screen and (max-width: 991px) {
+  #wrapper > .container .eco-losovacka {
+    display: none;
+  }
+}
+#wrapper > .container .eco-registration {
+  margin-top: 200px;
+}
+#wrapper > .container .eco-hi {
+  width: 386px;
+  height: 128px;
+  padding-top: 10px;
+  padding-right: 80px;
+  text-align: right;
+  margin-top: 30px;
+}
+#wrapper > .container .eco-hi > a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+}
+@media screen and (max-width: 991px) {
+  #wrapper > .container .eco-hi {
+    display: none;
+  }
+}
+#wrapper > .container .eco-footer {
+  text-align: center;
+  height: 30px;
+}
+.eco-scroll-bar {
+  /* width */
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+.eco-scroll-bar ::-webkit-scrollbar {
+  width: 40px;
+  /*background-color: rgba(255,255,255,0);*/
+}
+.eco-scroll-bar ::-webkit-scrollbar-track {
+  background-color: #848480;
+  box-shadow: inset 0 0 5px #3a3937;
+  border-radius: 20px;
+}
+.eco-scroll-bar ::-webkit-scrollbar-thumb {
+  background: #3a3937;
+  border-radius: 20px;
+}
+.eco-scroll-bar ::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+  /*border: 16px solid rgba(255,255,255,0);*/
+  background-clip: padding-box;
+}
+.eco-scroll-bar ::-webkit-scrollbar-track,
+.eco-scroll-bar ::-webkit-scrollbar-thumb {
+  border: 16px solid rgba(255, 255, 255, 0);
+  background-clip: padding-box;
+}
+.jumbotron {
+  background-color: #98D95F;
+}
+.main-prize {
+  height: 500px;
+  max-width: 550px;
+  float: right;
+}
+@media screen and (max-width: 992px) {
+  .main-prize {
+    height: initial;
+    max-width: initial;
+    float: initial;
+  }
+}
+.eco-user-rules {
+  height: 580px;
+  padding-left: 20px;
+}
+@media screen and (max-width: 991px) {
+  .eco-user-rules {
+    height: 100%;
+    margin-bottom: 20px;
+  }
+}
+.eco-prizes-carousel {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 5px;
+  max-width: 935px;
+}
+.eco-prizes-carousel .eco-prizes-carousel-top {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px #A9A9A9 solid;
+  /*background: -webkit-linear-gradient(left, rgba(134, 27, 54, 0.92), rgba(134, 27, 54, 0.82));
+        background: -moz-linear-gradient(left, rgba(134, 27, 54, 0.92), rgba(134, 27, 54, 0.82));
+        background: -o-linear-gradient(left, rgba(134, 27, 54, 0.92), rgba(134, 27, 54, 0.82));
+        background: linear-gradient(left, rgba(134, 27, 54, 0.92), rgba(134, 27, 54, 0.82));*/
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 440px) {
+  .eco-prizes-carousel .eco-prizes-carousel-top {
+    padding-bottom: 40px;
+  }
+}
+.eco-prizes-carousel .eco-prizes-carousel-top h2 {
+  font-size: 22px;
+  font-weight: normal;
+  padding: 20px 20px 10px 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+@media screen and (max-width: 500px) {
+  .eco-prizes-carousel .eco-prizes-carousel-top h2 {
+    padding: 10px 5px 5px 5px;
+    font-size: 18px;
+  }
+}
+.eco-prizes-carousel .eco-prizes-carousel-top img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 250px;
+}
+@media screen and (max-width: 500px) {
+  .eco-prizes-carousel .eco-prizes-carousel-top img {
+    height: 80%;
+    width: 80%;
+  }
+}
+.eco-prizes-carousel .eco-prizes-carousel-top .footer-bolded-info {
+  color: #B0B0B2;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 20px;
+  width: 150px;
+}
+.eco-prizes-carousel .eco-prizes-carousel-top .footer-info {
+  color: #FFFFFF;
+  font-size: 18px;
+  /*padding-bottom: 20px;*/
+  margin-left: 120px;
+  /*width: 250px;
+            text-align: right;*/
+}
+.eco-prizes-carousel .eco-prizes-carousel-top hr {
+  border: 1px solid #B0B0B2;
+  height: 2px;
+  background: #B0B0B2;
+  width: 90%;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+.eco-prizes-carousel .eco-prizes-carousel-info {
+  /*background: -webkit-linear-gradient(left, rgba(66, 66, 66, 0.92), rgba(66, 66, 66, 0.82));
+        background: -moz-linear-gradient(left, rgba(66, 66, 66, 0.92), rgba(66, 66, 66, 0.52));
+        background: -o-linear-gradient(left, rgba(66, 66, 66, 0.92), rgba(66, 66, 66, 0.52));
+        background: linear-gradient(left, rgba(66, 66, 66, 0.92), rgba(66, 66, 66, 0.52));*/
+  background: rgba(66, 66, 66, 0.72);
+  color: #FFFFFF;
+  height: 150px;
+  max-width: 550px;
+  /*@media screen and (max-width: @eco-page-max-width-screen) {
+            height:100%;
+            margin-bottom:20px;
+        }*/
+}
+.direction-control:hover {
+  color: #780026;
+}
+@media screen and (max-width: 991px) {
+  .direction-control:hover {
+    color: #FFFFFF;
+  }
+}
+.direction-control:active {
+  color: #780026;
+}
+.functional-edging {
+  padding-top: 150px;
+  margin-bottom: 70px;
+}
+@media screen and (max-width: 500px) {
+  .functional-edging {
+    padding-top: 70px;
+    margin-bottom: 90px;
+  }
+}
+.eco-user-account {
+  /*h3:first-child {
+        color: @eco-red-color;
+    }*/
+}
+.eco-user-account h3 {
+  clear: both;
+  margin: 0 0 10px 5px;
+  font-size: 17px;
+  color: #000000;
+  font-weight: bold;
+}
+.eco-user-account h3.sance {
+  margin-top: 10px;
+}
+.eco-user-account h3.sance span {
+  color: red;
+}
+.eco-user-account .code-list-heading {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.eco-user-account .ticket-list-heading {
+  /*margin-top: 5px;*/
+  margin-bottom: 5px;
+}
+.eco-user-account div.user {
+  max-width: 550px;
+}
+.eco-user-account div.user div.title {
+  color: #000000;
+  padding: 10px;
+  float: left;
+  width: 33%;
+  margin-bottom: 0px;
+}
+@media screen and (max-width: 550px) {
+  .eco-user-account div.user div.title {
+    display: none;
+  }
+}
+.eco-user-account div.user div.value {
+  width: 66%;
+  float: right;
+}
+@media screen and (max-width: 550px) {
+  .eco-user-account div.user div.value {
+    float: none;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+.eco-user-account div.user a.edit {
+  float: right;
+  font-size: 12px;
+  color: #780026;
+  line-height: 25px;
+}
+.eco-user-account div.user a.edit:hover {
+  color: #000000;
+}
+.eco-user-account div.user div.aagreement {
+  padding-left: 10px;
+  line-height: 25px;
+  font-size: 12px;
+  color: #000000;
+  float: left;
+}
+.eco-user-account .disagreement {
+  display: inline-block;
+  margin-bottom: 0px;
+}
+.eco-user-account .div-submit .submit-btn {
+  margin: 0;
+}
+.eco-user-account div.orders {
+  margin-bottom: 15px;
+  clear: both;
+  height: 100px;
+}
+.eco-user-account div.orders table {
+  width: 100%;
+}
+@media screen and (max-width: 532px) {
+  .eco-user-account div.orders table .wide-screen {
+    display: none;
+  }
+}
+.eco-user-account div.orders table .narrow-screen {
+  display: none;
+}
+@media screen and (max-width: 532px) {
+  .eco-user-account div.orders table .narrow-screen {
+    display: block;
+  }
+}
+.eco-user-account div.orders table .table-head {
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+@media screen and (max-width: 532px) {
+  .eco-user-account div.orders table .table-head {
+    border-bottom-width: 0px;
+  }
+}
+.eco-user-account div.orders table .prize {
+  font-size: 18px;
+}
+.eco-user-account div.orders table .center {
+  text-align: center;
+}
+.eco-user-account div.orders table tr td {
+  padding: 1px 8px;
+}
+.eco-user-account div.orders table tr td.right {
+  text-align: right;
+}
+.eco-user-account div.orders table tr td.name {
+  font-weight: bold;
+}
+.eco-user-account div.list {
+  clear: both;
+  height: 100px;
+}
+.eco-user-account div.list div.code {
+  float: left;
+  width: 180px;
+  padding-left: 15px;
+}
+.eco-user-account div.list div.code .date-event {
+  width: 78px;
+}
+.eco-user-account div.text {
+  margin-top: 10px;
+  padding-left: 15px;
+  color: #000000;
+}
+.eco-shop h2 {
+  text-align: center;
+  padding-bottom: 20px;
+  font-weight: bold;
+  font-size: 38px;
+  position: relative;
+  color: #000000;
+}
+.eco-shop h2 img.hi-sm {
+  height: 85px;
+  float: right;
+}
+.eco-shop .detail-info {
+  width: 895px;
+  height: 430px !important;
+  margin-left: 20px !important;
+  margin-top: 15px;
+  border-radius: 15px;
+  border: 1px #B0B0B2 solid;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.6);
+}
+@media screen and (max-width: 991px) {
+  .eco-shop .detail-info {
+    height: 535px !important;
+    width: 685px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .eco-shop .detail-info {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 651px) {
+  .eco-shop .detail-info {
+    width: 88%;
+  }
+}
+.eco-shop div.description {
+  position: absolute;
+  display: none;
+  z-index: 20;
+  text-align: justify;
+  background: #faffff;
+  background-color: rgba(255, 255, 255, 0.97);
+  padding: 20px;
+  overflow: auto;
+}
+@media screen and (max-width: 991px) {
+  .eco-shop div.description {
+    min-height: 250px;
+    margin-left: -10px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .eco-shop div.description table tr td img {
+    display: none;
+  }
+}
+.eco-shop div.description span.close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.eco-shop div.description h4 {
+  color: #DB4146;
+  font-weight: bold;
+}
+.eco-shop div.description span.amount-available {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+.eco-shop div.description span.amount-available span.red {
+  color: #DB4146;
+}
+.eco-shop div.shop-gallery {
+  padding-bottom: 10px;
+  height: 50px;
+}
+.eco-shop div.shop-gallery input {
+  margin: 0px 10px 0px 0px;
+  font-size: 16px;
+  height: 30px;
+  width: 30px;
+  background-color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  box-shadow: none;
+  text-align: right;
+  padding: 0 3px;
+}
+.eco-shop div.shop-gallery .units {
+  font-size: 18px;
+}
+.eco-shop div.shop-gallery .indentation {
+  margin-right: 50px;
+  float: right;
+}
+@media screen and (max-width: 360px) {
+  .eco-shop div.shop-gallery .indentation {
+    margin-right: 10px;
+  }
+}
+.eco-shop div.shop-gallery .indentation td .actual-ticket {
+  color: #FFFFFF;
+}
+.eco-shop div.shop-gallery .indentation td .actual-chance {
+  color: gold;
+  margin-left: 30px;
+}
+.eco-shop div.shop-gallery .indentation td .text {
+  font-size: 18px;
+}
+.eco-shop div.shop-gallery .indentation .shopping {
+  text-align: right;
+}
+.eco-shop div.shop-gallery .indentation table tr th {
+  font-weight: normal;
+  padding: 0 10px;
+  font-size: 16px;
+  color: #000000;
+}
+@media screen and (max-width: 500px) {
+  .eco-shop div.shop-gallery .indentation table tr th {
+    font-size: 13px;
+  }
+}
+.eco-shop div.shop-gallery .chance-info {
+  font-size: 18px;
+  margin-left: 20px;
+}
+.eco-shop div.shop-gallery .chance-info .percentage {
+  color: #FFFFFF;
+  /*margin-left: 15px;*/
+}
+.eco-shop .statistics table {
+  width: 100%;
+}
+.eco-shop .statistics table .table-head {
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+.eco-shop .statistics table .prize {
+  font-size: 18px;
+}
+.eco-shop .statistics table .center {
+  text-align: center;
+}
+.eco-shop .statistics table tr td {
+  padding: 1px 3px;
+}
+.eco-shop .statistics table tr td.right {
+  text-align: right;
+}
+.eco-shop .statistics table tr td.name {
+  font-weight: bold;
+}
+.eco-shop div.product-icons {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px #A9A9A9 solid;
+  border-radius: 15px;
+  text-align: center;
+  padding-left: 55px;
+  height: 80px;
+  margin-left: 7px;
+  margin-bottom: 5px;
+}
+@media screen and (max-width: 991px) {
+  .eco-shop div.product-icons {
+    height: 160px;
+    padding-left: 20px;
+    margin-right: 5px;
+  }
+}
+@media screen and (max-width: 502px) {
+  .eco-shop div.product-icons {
+    height: 240px;
+  }
+}
+@media screen and (max-width: 391px) {
+  .eco-shop div.product-icons {
+    height: 320px;
+  }
+}
+.eco-shop div.product-icons div.product-icon {
+  float: left;
+  text-align: center;
+  padding: 10px 15px;
+}
+.eco-shop div.product-icons div.product-icon img {
+  height: 60px;
+}
+.eco-shop-2016 h2 {
+  width: 600px;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 38px;
+  position: relative;
+  color: #FFFFFF;
+}
+.eco-shop-2016 h2 img.hi-sm {
+  height: 85px;
+  float: right;
+}
+.eco-shop-2016 .eco-christmas-banner {
+  width: 100%;
+  border-radius: 10px;
+}
+@media screen and (max-width: 991px) {
+  .eco-shop-2016 .eco-christmas-banner {
+    display: none;
+  }
+}
+.eco-shop-2016 div.description {
+  position: absolute;
+  display: none;
+  z-index: 20;
+  text-align: justify;
+  background: #faffff;
+  background-color: rgba(250, 255, 255, 0.98);
+  border-radius: 15px;
+  padding: 10px;
+  overflow: auto;
+  max-width: 95%;
+  height: 400px;
+  margin-top: 0px;
+}
+@media screen and (max-width: 991px) {
+  .eco-shop-2016 div.description {
+    height: auto;
+    min-height: 330px;
+    margin-left: -10px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .eco-shop-2016 div.description table tr td img {
+    display: none;
+  }
+}
+.eco-shop-2016 div.description h4 {
+  color: #DB4146;
+  font-weight: bold;
+}
+.eco-shop-2016 div.description span.amount-available {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+.eco-shop-2016 div.description span.amount-available span.red {
+  color: #DB4146;
+}
+.eco-shop-2016 div.shop-gallery {
+  margin-left: 15px;
+}
+.eco-shop-2016 div.shop-gallery div.cart {
+  background: #faffff;
+  background-color: rgba(250, 255, 255, 0.5);
+  background-size: 165px 165px;
+  background-position-y: 40px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  width: 290px;
+  height: 290px;
+  margin: 0 10px 10px 0;
+  float: left;
+  border-radius: 10px;
+  /*span.price {
+                font-weight: bold;
+
+                span {
+                    //color:@eco-bg-red-color;
+                    font-size: 20px;
+                }
+            }*/
+}
+.eco-shop-2016 div.shop-gallery div.cart a.show-desc {
+  position: absolute;
+  margin-top: 30px;
+}
+.eco-shop-2016 div.shop-gallery div.cart a.show-desc img {
+  height: 200px;
+  width: 290px;
+}
+.eco-shop-2016 div.shop-gallery div.cart h3 {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 7px 0;
+  margin-top: 0;
+  text-align: center;
+  font-size: 16px;
+  color: #000000;
+  background-color: #780026;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+.eco-shop-2016 div.shop-gallery div.cart h3 span.amount {
+  color: green;
+  font-weight: normal;
+  font-size: 12px;
+}
+.eco-shop-2016 div.shop-gallery div.cart div.footer {
+  margin-top: 163px;
+  padding: 10px;
+  text-align: right;
+}
+.eco-shop-2016 div.shop-gallery div.cart form.undeline {
+  text-align: right;
+  padding: 5px 10px;
+  border-top: 1px solid black;
+}
+.eco-shop-2016 div.shop-gallery div.cart form.undeline input {
+  margin: 0;
+  font-size: 12px;
+  height: 20px;
+  width: 30px;
+  background-color: #FFFFFF;
+  border: none;
+  border-radius: 3px;
+  box-shadow: none;
+  text-align: right;
+  padding: 0 3px;
+}
+.eco-basket h3 {
+  clear: both;
+  margin: 0 0 10px 15px;
+  font-size: 20px;
+  color: #780026;
+}
+.eco-basket div.basket-2018 {
+  max-width: 580px;
+  margin-bottom: 10px;
+}
+.eco-basket div.basket-2018 table {
+  width: 100%;
+}
+.eco-basket div.basket-2018 table col.w1 {
+  width: 100px;
+}
+.eco-basket div.basket-2018 table th {
+  padding: 0 5px;
+}
+.eco-basket div.basket-2018 table th.right {
+  text-align: right;
+}
+.eco-basket div.basket-2018 table td {
+  padding: 0 5px;
+}
+.eco-basket div.basket-2018 table td.right {
+  text-align: right;
+}
+.eco-basket .form-horizontal {
+  margin-left: 15px;
+}
+.eco-winners-heading {
+  color: #000000;
+  vertical-align: bottom;
+  border-bottom: 1px solid #DB4146;
+}
+.prizes-statistics {
+  margin-left: 4px;
+}
+.prizes-statistics > .prizes-statistics-header {
+  border-bottom: 1px solid #000000;
+}
+@media screen and (max-width: 991px) {
+  .prizes-statistics > .prizes-statistics-header .col-2 {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .prizes-statistics > .prizes-statistics-header .col-3 {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 546px) {
+  .prizes-statistics > .prizes-statistics-header .col-4 {
+    display: none !important;
+  }
+}
+.prizes-statistics > .prizes-statistics-header > .item,
+.prizes-statistics > .prizes-statistics-body > .item {
+  display: inline-block;
+  padding: 1px 18px;
+}
+.prizes-statistics > .prizes-statistics-header > .item > .right-head,
+.prizes-statistics > .prizes-statistics-body > .item > .right-head {
+  font-weight: bold;
+}
+.prizes-statistics > .prizes-statistics-header > .item > .right-head,
+.prizes-statistics > .prizes-statistics-body > .item > .right-head,
+.prizes-statistics > .prizes-statistics-header > .item > .right,
+.prizes-statistics > .prizes-statistics-body > .item > .right {
+  display: inline-block;
+  text-align: right;
+  width: 50px;
+}
+.prizes-statistics > .prizes-statistics-header > .item > .prize,
+.prizes-statistics > .prizes-statistics-body > .item > .prize,
+.prizes-statistics > .prizes-statistics-header > .item > .name,
+.prizes-statistics > .prizes-statistics-body > .item > .name {
+  display: inline-block;
+  font-weight: bold;
+  width: 70px;
+}
+.prizes-statistics > .prizes-statistics-header > .item > .prize,
+.prizes-statistics > .prizes-statistics-body > .item > .prize {
+  font-size: 18px;
+}
+.prizes-account > .prizes-statistics-header {
+  border-bottom: 1px solid #000000;
+}
+@media screen and (max-width: 991px) {
+  .prizes-account > .prizes-statistics-header .col-2 {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .prizes-account > .prizes-statistics-header .col-3 {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 545px) {
+  .prizes-account > .prizes-statistics-header .col-4 {
+    display: none !important;
+  }
+}
+.prizes-account > .prizes-statistics-header > .item,
+.prizes-account > .prizes-statistics-body > .item {
+  display: inline-block;
+  padding: 1px 18px;
+}
+.prizes-account > .prizes-statistics-header > .item > .right,
+.prizes-account > .prizes-statistics-body > .item > .right {
+  display: inline-block;
+  text-align: right;
+  width: 50px;
+}
+.prizes-account > .prizes-statistics-header > .item > .prize,
+.prizes-account > .prizes-statistics-body > .item > .prize,
+.prizes-account > .prizes-statistics-header > .item > .name,
+.prizes-account > .prizes-statistics-body > .item > .name {
+  display: inline-block;
+  font-weight: bold;
+  width: 125px;
+}
+.prizes-account > .prizes-statistics-header > .item > .prize,
+.prizes-account > .prizes-statistics-body > .item > .prize {
+  font-size: 18px;
+}
+.eco-img-bubl {
+  float: left;
+  margin-top: 50px;
+}
+.eco-img-card-arrow {
+  float: left;
+  margin-top: 45px;
+  width: 500px;
+}
+div.search-ctrl {
+  float: left;
+  display: inline-flex;
+}
+@media (max-width: 768px) {
+  div.search-ctrl #pn {
+    width: 140px;
+  }
+}
+div.search-ctrl button {
+  margin-left: 8px;
+}
+div.search-ctrl .input-group input {
+  width: auto;
+}
+div.search-ctrl .input-group span {
+  width: 0;
+}
+#eco-info-data #info-edit-btn,
+#eco-info-data #info-delete-btn {
+  margin-left: 10px;
+}
+#eco-info-data table {
+  float: left;
+  margin-top: 10px;
+}
+#eco-info-data div table.table-small {
+  width: 29%;
+}
+@media (max-width: 992px) {
+  #eco-info-data div table.table-small {
+    width: 100% !important;
+  }
+  #eco-info-data div table.table-base-info {
+    width: 100% !important;
+    margin-right: 0 !important;
+  }
+}
+#eco-info-data div table.table-base-info {
+  width: 70%;
+  margin-right: 10px;
+}
+#eco-info-data div table.table-to-end {
+  width: 100%;
+}
+.eco-info-edit div.edit-section {
+  margin-bottom: 10px;
+}
+.eco-info-edit div.edit-section table {
+  width: 100%;
+}
+.eco-info-edit div.edit-section table input {
+  width: 100%;
+  border: transparent;
+}
+.table-bordered tr th,
+.table-bordered tr td {
+  padding: 6px 12px;
+}
+#eco-parcels #eco-categories {
+  margin-top: 10px;
+}
+#eco-parcels #eco-categories a {
+  color: #337AB7;
+}
+#eco-parcels #eco-categories a:hover {
+  text-decoration: none;
+}
+#eco-parcels #eco-categories button {
+  width: 100px;
+}
+#eco-parcels #eco-categories button.btn-active {
+  background-color: #66A72F;
+  color: white;
+}
+#eco-parcels hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.btn-parcel {
+  background-color: #66A72F;
+  color: white;
+  margin-bottom: 16px;
+}
+.eco-table-category-add,
+.eco-table-category-header,
+.eco-table-category-content {
+  width: 100%;
+}
+.eco-table-category-content tr td input,
+.eco-table-category-add tr td input,
+.eco-table-category-content tr th input,
+.eco-table-category-add tr th input {
+  width: 100%;
+  border: none;
+}
+.eco-table-category-content {
+  margin-top: 0 !important;
+}
+.eco-table-category-content tbody tr th {
+  font-weight: 400 !important;
+}
+.eco-scrollbar {
+  width: 100%;
+  float: left;
+  position: relative;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+  border-bottom: 1px solid #ddd;
+}
+.upload-ctrl {
+  display: flex;
+  margin-bottom: 10px;
+}
+.upload-ctrl input.btn {
+  margin-left: 10px;
+}
+.div-download {
+  display: inline-grid;
+  width: 400px;
+}
+.div-download .div-abc label {
+  margin-right: 10px;
+  font-weight: normal;
+}
+.div-download .div-abc label input {
+  margin-right: 5px;
+}
+.div-download textarea {
+  text-align: left;
+  width: 100%;
+  height: 300px;
+  resize: none;
+  -webkit-user-select: text;
+  cursor: text;
+  margin-bottom: 10px;
+}
+#loginForm .eco-col-input,
+#registrationForm .eco-col-input {
+  width: 30%;
+}
+@media screen and (max-width: 1199px) {
+  #loginForm .eco-col-input,
+  #registrationForm .eco-col-input {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 767px) {
+  #loginForm .eco-col-input,
+  #registrationForm .eco-col-input {
+    width: 100%;
+  }
+}
+#reg-person-list {
+  overflow: auto;
+}
+#reg-person-list table {
+  width: 100%;
+}
+.condtitions-bootbox .modal-dialog,
+.condtitions-bootbox .modal-content {
+  width: 800px;
+}
+@media screen and (max-width: 800px) {
+  .condtitions-bootbox .modal-dialog,
+  .condtitions-bootbox .modal-content {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 800px) {
+  #chartdiv {
+    display: none;
+  }
+}
+#eco-div-conditions-history {
+  display: inline-block;
+  width: 100%;
+}
+.div-upload {
+  width: 400px;
+}
+.div-upload form {
+  width: 100%;
+}
+.div-upload form .upload-ctrl {
+  width: 100%;
+}
+.div-upload form .upload-ctrl .box {
+  width: 100%;
+}
+#upload-person-list {
+  height: 535px;
+}
+#upload-person-list table {
+  width: 100%;
+}
+.eco-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.eco-table td {
+  border: 1px solid #DDD;
+  padding: 8px;
+}
+.eco-table td a:hover {
+  cursor: pointer;
+}
+.eco-table tr:nth-child(even) {
+  background-color: #E6E6E6;
+}
+.eco-table tr:hover {
+  background-color: #98D95F;
+}
+.eco-table th {
+  border: 1px solid #DDD;
+  padding: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #66A72F;
+  color: white;
+  font-weight: normal;
+}

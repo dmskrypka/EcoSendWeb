@@ -1,0 +1,139 @@
+﻿@model AirInfoVM
+
+@if (Model != null)
+{
+    <div>
+        <button id="info-edit-btn" class="btn" data-id="@this.Model.Id" data-url="@this.Url.Action("EditAirInfo", "Home")">EDIT</button>
+        <button id="info-delete-btn" class="btn" data-id="@this.Model.Id">DELETE</button>
+
+        <div class="tbl-box">
+            <table class="table-bordered table-base-info">
+                <colgroup>
+                    <col width="100" />
+                    <col />
+                </colgroup>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.PartNumber)</th>
+                    <th>@Model.PartNumber</th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.Description)</th>
+                    <th>@Model.Description</th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.MfgName)</th>
+                    <th>@Model.MfgName</th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.Segment)</th>
+                    <th>@Model.Segment</th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.ATA)</th>
+                    <th>@Model.ATA</th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.ABC)</th>
+                    <th>@Model.ABC</th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.Mod)</th>
+                    <th>@Model.Mod</th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.Aircraft)</th>
+                    <th>@Model.Aircraft</th>
+                </tr>
+            </table>
+            <table class="table-bordered table-small">
+                <colgroup>
+                    <col width="130" />
+                    <col />
+                </colgroup>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.StrReparePrice)</th>
+                    <th>@Model.StrReparePrice</th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.StrSuggestedPurchasePrice)</th>
+                    <th>@Model.StrSuggestedPurchasePrice</th>
+                </tr>
+            </table>
+            <table class="table-bordered table-small">
+                <colgroup>
+                    <col width="130" />
+                    <col />
+                </colgroup>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.TwlvMonthsTotalSales)</th>
+                    <th>@Model.TwlvMonthsTotalSales</th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.TwlvMonthsTotalNoBids)</th>
+                    <th>@Model.TwlvMonthsTotalNoBids</th>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.TwlvMonthsTotalQuotes)</th>
+                    <th>@Model.TwlvMonthsTotalQuotes</th>
+                </tr>
+            </table>
+        </div>
+        <div class="tbl-box">
+            <table id="table-conditions" class="table-bordered table-to-end">
+                <colgroup>
+                    <col width="80" />
+                    <col width="100" />
+                    <col width="100" />
+                    <col width="160" />
+                    <col />
+                    <col width="100" />
+                </colgroup>
+
+                <tr>
+                    <th>CONDITION</th>
+                    <th>MIN PRICE</th>
+                    <th>MAX PRICE</th>
+                    <th>
+                        <div class="eco-tooltip">
+                            UPDATED
+                            <span class="eco-tooltiptext">Setted on save</span>
+                        </div>
+                    </th>
+                    <th>COMMENT</th>
+                    <th></th>
+                </tr>
+                @foreach (ConditionVM c in Model.Conditions)
+                {
+                    <tr>
+                        <th>@Enum.GetName(typeof(EcoSendWeb.Infrastructure.Defs.ConditionType), c.ConditionType)</th>
+                        <th>@c.StrMinPrice</th>
+                        <th>@c.StrMaxPrice</th>
+                        <th>@c.StrUpdated</th>
+                        <th>@c.Comment</th>
+                        <th class="text-right"><a class="btn-show-history" data-id="@Model.Id" data-condition="@c.ConditionType" href="#">HISTORY</a></th>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div id="eco-category-data">
+        @Html.Partial("CategoryInfoPartial", this.Model)
+    </div>
+
+}
+
+<script type="text/javascript">
+
+    require(["jquery", "site/eco.site"], function (jQuery, site) {
+        jQuery(function ($) {
+
+            var ais = new site.AirInfos("eco-info-data");
+            ais.onEditBase("info-edit-btn", "@this.Url.Action("SaveAirInfo", "Home")", "@this.Url.Action("PnSearch", "Home")");
+            ais.onDelete("info-delete-btn", "@this.Url.Action("DeleteAirInfo", "Home")");
+            ais.onShowHistory("table-conditions", "btn-show-history", "@this.Url.Action("ConditionHistoryPartial", "Home")");
+
+        });
+    });
+
+</script>
+

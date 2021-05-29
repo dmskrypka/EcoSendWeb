@@ -1,0 +1,102 @@
+﻿@import url("eco.ui.defs.less");
+
+.bootbox {
+    z-index: 2001;
+
+    &.oly-center {
+
+        .modal-footer {
+            text-align: center;
+        }
+    }
+
+    .modal-dialog {
+
+        .modal-content {
+            border-radius: 0;
+            border: none;
+
+            .modal-footer {
+
+                .btn {
+                    /*text-shadow: none;
+                    border-radius: 0;
+                    border: none;*/
+                }
+
+                .btn[data-bb-handler='cancel'],
+                .btn-primary {
+                    /*-moz-transition: all 0.6s ease-out;
+                    -o-transition: all 0.6s ease-out;
+                    -webkit-transition: all 0.6s ease-out;
+                    transition: all 0.6s ease-out;
+                    padding: @padding-large-vertical @padding-base-horizontal;*/
+                }
+
+                .btn-primary {
+                    /*background-color: @oly-yellow-color;
+                    color: @oly-gray-color-1;*/
+
+                    &:focus,
+                    &:link,
+                    &:visited {
+                        //color: @oly-gray-color-1;
+                        text-decoration: none;
+                    }
+
+                    &:hover {
+                        /*color: @oly-gray-color-1;
+                        background-color: @oly-yellow-color;*/
+                        text-decoration: none;
+                    }
+
+                    &:active {
+                        //color: @oly-gray-color-1;
+                        text-decoration: none;
+                    }
+                }
+
+                .btn[data-bb-handler='cancel'] {
+                    /*background-color: lighten(@oly-gray-color-1, 50%);
+                    color: @oly-white-color;*/
+
+                    &:focus,
+                    &:link,
+                    &:visited {
+                        //color: @oly-white-color;
+                        text-decoration: none;
+                    }
+
+                    &:hover {
+                        /*color: @oly-white-color;
+                        background-color: @oly-blue-color;*/
+                        text-decoration: none;
+                    }
+
+                    &:active {
+                        //color: @oly-white-color;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.eco-added {
+
+    .eco-buttons {
+
+        .eco-btn-dialog {
+            color: @eco-red-color;
+        }
+
+        .eco-btn:last-child {
+            margin-left: @padding-large-horizontal;
+        }
+    }
+}
+
+.btn-success{
+    background-color: @eco-green-color-3;
+}

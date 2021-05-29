@@ -1,0 +1,162 @@
+﻿@font-face {
+  font-family: "ArtBrush";
+  src: url('../../fonts/Artbrush.eot');
+  src: url('../../fonts/Artbrush.eot#iefix') format('embedded-opentype'), url('../../fonts/Artbrush.woff2') format('woff2'), url('../../fonts/Artbrush.woff') format('woff'), url('../../fonts/Artbrush.ttf') format('truetype'), url('../../fonts/Artbrush.svg#ArtBrush') format('svg');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}
+.slicknav_menu {
+  padding: 0;
+  background: none;
+  float: left;
+  display: none;
+  box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2), 1px 1px 7px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+@media screen and (max-width: 991px) {
+  .slicknav_menu {
+    display: block;
+  }
+}
+.slicknav_menu .slicknav_btn {
+  box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2), 1px 1px 7px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  margin: 0;
+  background-color: #DB4146;
+}
+.slicknav_menu .slicknav_btn .slicknav_menutxt {
+  display: none;
+}
+.slicknav_menu .slicknav_btn .slicknav_icon {
+  margin: 0;
+}
+.slicknav_menu .slicknav_btn .slicknav_icon .slicknav_icon-bar {
+  background-color: #fff;
+  border-radius: 0;
+}
+.slicknav_menu .slicknav_btn .slicknav_icon .slicknav_icon-bar + .slicknav_icon-bar {
+  margin-top: 4px;
+}
+.slicknav_menu .slicknav_nav {
+  position: absolute;
+  z-index: 30;
+  left: 0;
+  top: 40px;
+  width: 100%;
+  box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2), 1px 1px 7px rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+}
+.slicknav_menu .slicknav_nav li {
+  background-color: #DB4146;
+  border-top: solid 1px #b3b3b3;
+}
+.slicknav_menu .slicknav_nav li:first-child {
+  border-top: none;
+}
+.slicknav_menu .slicknav_nav li a {
+  display: block;
+  overflow: hidden;
+  background-color: transparent;
+  border-radius: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 12px 0 12px 32px;
+}
+.slicknav_menu .slicknav_nav li a span {
+  display: inline-block;
+  margin: auto 0;
+  text-transform: uppercase;
+}
+.slicknav_menu .slicknav_nav li a img {
+  float: left;
+}
+.tooltip .tooltip-inner {
+  max-width: 500px;
+  width: 500px;
+}
+@media screen and (max-width: 767px) {
+  .tooltip .tooltip-inner {
+    max-width: 250px;
+    width: 250px;
+  }
+  .tooltip .tooltip-inner img {
+    display: none;
+  }
+}
+.west-carousel {
+  width: 945px;
+}
+@media screen and (max-width: 991px) {
+  .west-carousel {
+    width: 100%;
+  }
+}
+.west-carousel .carousel-inner {
+  margin-left: auto;
+  margin-right: auto;
+}
+.west-carousel .carousel-inner .item {
+  /*img {
+                margin: 0 auto;
+
+                @media screen and (max-width: @screen-sm-max) {
+                    max-width: none;
+                    height: @west-carousel-sm-height;
+                    margin-left: -50%;
+                }
+
+                @media screen and (max-width: @screen-xs-max) {
+                    height: @west-carousel-xs-height;
+                }
+
+                @media screen and (max-width: @west-screen-xxs-max) {
+                    height: @west-carousel-xxs-height;
+                }
+            }*/
+}
+.west-carousel .carousel-inner .item div {
+  /*height: @west-carousel-item-desc-height;
+                padding: 4 * @west-base-space-size 0;
+                font-family: @west-os-light-font;
+                font-size: @west-carousel-item-desc-font-size;
+                color: @west-white-text-color;
+                text-transform: uppercase;
+                text-align: center;
+                position: absolute;*/
+  width: 100%;
+  /*@media screen and (max-width: @screen-xs-max) {
+                    font-size: @west-carousel-item-desc-font-size - 2px;
+                    padding: 2 * @west-base-space-size 0;
+                }*/
+}
+.west-carousel .carousel-control {
+  background-image: none;
+  opacity: 1;
+  text-shadow: 0 1px 7px rgba(0, 0, 0, 0.6);
+}
+.west-carousel .carousel-control:hover,
+.west-carousel .carousel-control:focus {
+  opacity: 1;
+}
+.west-carousel .right {
+  /*height:300px;*/
+}
+@media screen and (max-width: 1199px) {
+  .west-carousel .left {
+    background: url('images/carousel-left-arrow.png') no-repeat right 35%;
+  }
+  .west-carousel .left:hover {
+    background: url('images/carousel-left-arrow-h.png') no-repeat right 35%;
+  }
+  .west-carousel .right {
+    background: url('images/carousel-right-arrow.png') no-repeat left 35%;
+  }
+  .west-carousel .right:hover {
+    background: url('images/carousel-right-arrow-h.png') no-repeat left 35%;
+  }
+}

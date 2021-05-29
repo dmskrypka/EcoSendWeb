@@ -1,0 +1,52 @@
+﻿@model NewParcelVM
+
+<div class="form-horizontal">
+
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RecipientFirstName, new { @class = "col-xs-4" })
+        @Html.TextBoxFor(m => m.RecipientFirstName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RecipientLastName, new { @class = "col-xs-4" })
+        @Html.TextBoxFor(m => m.RecipientLastName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RecipientEmail, new { @class = "col-xs-4" })
+        @Html.TextBoxFor(m => m.RecipientEmail)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DestStreet, new { @class = "col-xs-4" })
+        @Html.TextBoxFor(m => m.DestStreet)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DestCity, new { @class = "col-xs-4" })
+        @Html.TextBoxFor(m => m.DestCity)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DestPostalCode, new { @class = "col-xs-4" })
+        @Html.TextBoxFor(m => m.DestPostalCode)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DestCountry, new { @class = "col-xs-4" })
+        @Html.TextBoxFor(m => m.DestCountry)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PackType, new { @class = "col-xs-4" })
+        @Html.DropDownListFor(x => Model.PackType, Model.PackTypes)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Points, new { @class = "col-xs-4" })
+        @Html.TextBoxFor(x => Model.Points, new { @type = "number", @min = "0", @max = Model.Points })
+    </div>
+
+</div>

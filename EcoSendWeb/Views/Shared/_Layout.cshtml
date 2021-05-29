@@ -1,0 +1,145 @@
+﻿@{
+    EcoSendWeb.Infrastructure.IExtendedPrincipal user = User as EcoSendWeb.Infrastructure.IExtendedPrincipal;
+}
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=yes" />
+    <meta name="description" content="Air Data Web" />
+    <meta name="language" content="cs" />
+    @RenderSection("metatags", required: false)
+    <title>@ViewBag.Title - EcoSend</title>
+
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/bootstrap/css")
+    @Styles.Render("~/Content/themes/eco/css")
+    @Styles.Render("~/Content/slicknav/css")
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script type="text/javascript" src="~/Scripts/require-setup.js"></script>
+    <script type="text/javascript" src="~/Scripts/require.js"></script>
+
+    <script type="text/javascript">
+        window.config = {
+            locale: "cs-CZ"
+        };
+    </script>
+
+    @RenderSection("headscripts", required: false)
+</head>
+<body>
+    <div class="eco-nav-menu navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="@Url.Action("Index", "Home")" class="eco-brand">
+                    <img class="eco-logo" title="EcoSend" src="~/Content/themes/eco/images/logo.jpg" />
+                    <span class="navbar-brand"><b>E</b>co<b>S</b>end</span>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("My Parcels", "Index", "Parcel")</li>
+                        <li>@Html.ActionLink("My Movements", "Movements", "Parcel")</li>
+                    }
+
+                    @if (User.IsInRole("worker"))
+                    {
+                        <li>@Html.ActionLink("Manage Parcels", "UsersParcels", "Parcel")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    }
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="eco-autorize-menu"><a href="#" id="btn-logout">LOGOUT</a></li>
+                        <li class="eco-autorize-menu hidden-sm">
+                            <span class="eco-menu-points hidden-xs">Points:&nbsp;<b>@user.Points</b></span>
+                            <a href="@Url.Action("UserInfo", "Account")" class="eco-menu-user">
+                                <i class="fa fa-user"></i>&nbsp;&nbsp;@User.Identity.Name
+                            </a>
+                        </li>
+                        <li class="eco-autorize-menu hidden-lg hidden-md hidden-xs">
+                            <a href="@Url.Action("UserInfo", "Account")" class="eco-menu-user">
+                                <i class="fa fa-user"></i>&nbsp;&nbsp;ACCOUNT
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="eco-autorize-menu">@Html.ActionLink("Registration", "Registration", "Account")</li>
+                        <li class="eco-autorize-menu">@Html.ActionLink("Login", "Login", "Account")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper" class="container">
+        <div class="container">
+            <div class="renderbody">
+
+                @RenderBody()
+                @RenderSection("footer", false)
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        require(["jquery", "site/eco.site.globals", "site/eco.site", "bootbox"], function (jQuery, global, site, bootbox) {
+        jQuery(function ($) {
+
+            global.Global.setup();
+
+            //handle closing web app
+                @*window.addEventListener("unload", function (event) {
+                     $.ajax({
+                            type: 'POST',
+                            url: "@this.Url.Action("LogoutUser", "Account")"
+                        });
+                });*@
+
+                //initPanelMenu = function (panelId) {
+                //    $('#' + panelId + ' > li').hover(function (e) {
+                //        $('#' + panelId + ' > li:hover > div').stop(true, true).fadeIn('slow');
+                //    }, function (e) {
+                //        $('#' + panelId + ' > li > div').fadeOut('slow');
+                //    });
+                //};
+
+                var ac = new site.Account("eco-submenu");
+                ac.onLogout("btn-logout", "@this.Url.Action("LogoutUser", "Account")");
+                ac.onShowList("btn-user-list", "User list info", "@this.Url.Action("ShowUserList", "Account")");
+                ac.onShowList("btn-user-upload", "Users uploads info", "@this.Url.Action("UsersUploads", "Account")");
+
+                //initPanelMenu("airnavigation");
+            });
+        });
+
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

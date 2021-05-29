@@ -1,0 +1,326 @@
+﻿@font-face {
+  font-family: "ArtBrush";
+  src: url('../../fonts/Artbrush.eot');
+  src: url('../../fonts/Artbrush.eot#iefix') format('embedded-opentype'), url('../../fonts/Artbrush.woff2') format('woff2'), url('../../fonts/Artbrush.woff') format('woff'), url('../../fonts/Artbrush.ttf') format('truetype'), url('../../fonts/Artbrush.svg#ArtBrush') format('svg');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}
+.west-select {
+  width: 100%;
+  max-width: 270px;
+  height: 35px;
+  border: solid 2px #780026;
+  border-radius: 13px;
+  box-shadow: 3px 3px 10px #4d4d4d;
+  margin-right: 36px;
+  margin-bottom: 12px;
+  display: inline-flex;
+  background-color: rgba(255, 255, 255, 0.7);
+  background-image: url('images/dropdown-arrows.png');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.west-select select {
+  background: transparent;
+  border: none;
+  width: 98%;
+  font-size: 18px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.west-select select::-ms-expand {
+  display: none;
+}
+input[type='text'],
+input[type='password'] {
+  width: 100%;
+  max-width: 270px;
+  height: 35px;
+  border: solid 2px #780026;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 13px;
+  box-shadow: 3px 3px 10px #4d4d4d;
+  margin-right: 36px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  padding: 0 10px;
+}
+.west-checkbox {
+  color: #780026;
+  font-weight: normal;
+}
+.west-checkbox input[type='checkbox'] {
+  display: none;
+}
+.west-checkbox span {
+  display: block;
+  float: left;
+  background-color: rgba(255, 255, 255, 0.7);
+  background-color: #ffffff;
+  color: #000000;
+  border: solid 2px #780026;
+  border-radius: 7px;
+  box-shadow: 3px 3px 10px #4d4d4d;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 10px 15px 0;
+}
+.west-checkbox span:before {
+  content: "";
+  vertical-align: middle;
+}
+.west-checkbox :checked + span:before {
+  content: "\2713 ";
+}
+a.west-btn,
+.west-btn {
+  border: solid 2px #780026;
+  border-radius: 13px;
+  box-shadow: 3px 3px 10px #4d4d4d;
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 35px;
+  padding: 0 10px;
+  color: #780026;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+a.west-btn span,
+.west-btn span {
+  /*background-image: -webkit-gradient( linear, left top, right top, color-stop(0, @west-white-color), color-stop(0.25, @west-gold-color), color-stop(0.5, @west-white-color), color-stop(0.75, @west-gold-color), color-stop(1, @west-gold-color));
+        background-image: gradient( linear, left top, right top, color-stop(0, @west-white-color), color-stop(0.25, @west-gold-color), color-stop(0.5, @west-white-color), color-stop(0.75, @west-gold-color), color-stop(1, @west-white-color));
+        background: -webkit-linear-gradient(left, @west-white-color 0, @west-gold-color 0.25, @west-white-color 0.5, @west-gold-color 0.75, @west-white-color 1);
+        background-image: linear-gradient(to right, @west-white-color 0, @west-gold-color 0.25, @west-white-color 0.5, @west-gold-color 0.75, @west-white-color 1);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
+        -webkit-background-clip: text;
+        background-clip: text;*/
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  a.west-btn span,
+  .west-btn span {
+    color: inherit;
+  }
+}
+a.west-btn i.fa,
+.west-btn i.fa {
+  margin-left: 10px;
+  font-weight: bold;
+}
+a.west-btn {
+  display: inline-block;
+  line-height: 31px;
+}
+a.west-btn:link,
+a.west-btn:visited,
+a.west-btn:hover,
+a.west-btn:active {
+  text-decoration: none;
+}
+.west-buttons {
+  float: left;
+  clear: left;
+  width: 100%;
+  margin-top: 20px;
+}
+.confirm-code-btn-pos {
+  margin-top: 35px;
+}
+@media screen and (max-width: 991px) {
+  .confirm-code-btn-pos {
+    margin-top: 0px;
+  }
+}
+.west-help {
+  cursor: pointer;
+  position: absolute;
+  margin-top: 2.5px;
+  margin-left: -31px;
+}
+.west-help:before {
+  content: "?";
+  font-style: normal;
+  font-weight: bold;
+  background-color: #780026;
+  width: 24px;
+  border-radius: 15px;
+  border: solid 2px #ffffff;
+  display: inline-block;
+  text-align: center;
+  color: #ffffff;
+}
+.west-help:hover .west-help-text {
+  display: block;
+}
+.west-help .west-help-text {
+  display: none;
+  position: absolute;
+  top: -4px;
+  left: 20px;
+  padding-left: 10px;
+  z-index: 10;
+  white-space: nowrap;
+}
+.west-help .west-help-text:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 30%;
+  left: 5px;
+  width: 0;
+  border-width: 5px 5px 5px 0;
+  border-style: solid;
+  border-color: transparent #B0B0B2;
+  opacity: 0.9;
+}
+.west-help .west-help-text span {
+  display: block;
+  background-color: #B0B0B2;
+  opacity: 0.95;
+  padding: 6px 10px;
+  border-radius: 7px;
+  overflow: hidden;
+  color: #780026;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: bold;
+}
+.west-exclamation {
+  cursor: pointer;
+  position: absolute;
+  margin-top: 2.5px;
+  margin-left: 5px;
+}
+.west-exclamation:before {
+  content: "!";
+  font-style: normal;
+  font-weight: bold;
+  background-color: #780026;
+  width: 24px;
+  border-radius: 15px;
+  border: solid 2px #ffffff;
+  display: inline-block;
+  text-align: center;
+  color: #ffffff;
+}
+.west-exclamation:hover .west-exclamation-text {
+  display: block;
+}
+.west-exclamation .west-exclamation-text {
+  display: none;
+  position: absolute;
+  top: -4px;
+  left: 20px;
+  padding-left: 10px;
+  z-index: 10;
+  min-width: 310px;
+}
+.west-exclamation .west-exclamation-text:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  width: 0;
+  border-width: 5px 5px 5px 0;
+  border-style: solid;
+  border-color: transparent #B0B0B2;
+  opacity: 0.9;
+}
+.west-exclamation .west-exclamation-text span {
+  display: block;
+  background-color: #B0B0B2;
+  opacity: 0.95;
+  padding: 6px 10px;
+  border-radius: 7px;
+  overflow: hidden;
+  color: #780026;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: bold;
+}
+.west-exclamation-two {
+  cursor: pointer;
+  position: absolute;
+  margin-top: 2.5px;
+}
+.west-exclamation-two:before {
+  content: "!";
+  font-style: normal;
+  font-weight: bold;
+  background-color: #780026;
+  width: 24px;
+  border-radius: 15px;
+  border: solid 2px #ffffff;
+  display: inline-block;
+  text-align: center;
+  color: #ffffff;
+}
+.west-exclamation-two:hover .west-exclamation-text {
+  display: block;
+}
+.west-exclamation-two .west-exclamation-text {
+  text-align: left;
+  display: none;
+  position: absolute;
+  top: -210px;
+  left: -250px;
+  padding-left: 10px;
+  z-index: 100;
+  min-width: 310px;
+  /*
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: @padding-small-horizontal;
+            left: @padding-small-horizontal / 2;
+            width: 0;
+            border-width: @padding-small-horizontal / 2 @padding-small-horizontal / 2 @padding-small-horizontal / 2 0;
+            border-style: solid;
+            border-color: transparent @west-gray-color;
+            opacity: 0.9;
+        }
+*/
+}
+.west-exclamation-two .west-exclamation-text span {
+  display: block;
+  background-color: #B0B0B2;
+  opacity: 0.95;
+  padding: 6px 10px;
+  border-radius: 7px;
+  overflow: hidden;
+  color: #780026;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: bold;
+}
+a.west-black-link {
+  color: #000000;
+}
+a.west-red-link {
+  color: #780026;
+}
+a.west-red-link:link,
+a.west-black-link:link,
+a.west-red-link:visited,
+a.west-black-link:visited {
+  text-decoration: underline;
+}
+a.west-red-link:hover,
+a.west-black-link:hover {
+  color: #000000;
+}
+a.west-red-link:active,
+a.west-black-link:active {
+  text-decoration: underline;
+}
