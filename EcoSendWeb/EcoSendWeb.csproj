@@ -591,19 +591,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParcelController.cs" />
-    <Compile Include="Extensions\EnumerableExtensions.cs" />
-    <Compile Include="Extensions\ExcelColNameAttribute.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ExcelHelper.cs" />
-    <Compile Include="Helpers\ExportHelper.cs" />
     <Compile Include="Helpers\LiqPay\Defs.cs" />
     <Compile Include="Helpers\LiqPay\LiqPayApiHelper.cs" />
     <Compile Include="Helpers\LiqPay\LiqPayApiRequest.cs" />
     <Compile Include="Helpers\LiqPay\LiqPayApiResponse.cs" />
-    <Compile Include="Helpers\SerializationUtils.cs" />
     <Compile Include="Helpers\SqlQueryHelper.cs" />
     <Compile Include="Infrastructure\ActionResults\DtoActionResult.cs" />
     <Compile Include="Infrastructure\Attributes\MultipleButtonAttribute.cs" />
@@ -614,21 +608,11 @@
     <Compile Include="Infrastructure\Extensions\ExceptionExtesion.cs" />
     <Compile Include="Infrastructure\FormAuth.cs" />
     <Compile Include="Infrastructure\ViewEngine.cs" />
-    <Compile Include="Mails\IMailer.cs" />
-    <Compile Include="Mails\Mailer.cs" />
     <Compile Include="Mapping\Service\ParcelMappingProfile.cs" />
     <Compile Include="Mapping\Service\AccountMappingProfile.cs" />
-    <Compile Include="Mapping\Service\HomeMappingProfile.cs" />
     <Compile Include="Mapping\View\ParcelMappingProfile.cs" />
     <Compile Include="Mapping\View\AccountMappingProfile.cs" />
-    <Compile Include="Mapping\View\HomeMappingProfile.cs" />
-    <Compile Include="Models\BO\Account\UploadInfo.cs" />
     <Compile Include="Models\BO\Account\UserBO.cs" />
-    <Compile Include="Models\BO\Account\UserUpload.cs" />
-    <Compile Include="Models\BO\Home\AirInfo.cs" />
-    <Compile Include="Models\BO\Home\CategoryInfo.cs" />
-    <Compile Include="Models\BO\Home\ConditionHistory.cs" />
-    <Compile Include="Models\BO\Account\LoginInfo.cs" />
     <Compile Include="Models\BO\Account\RegisteredPerson.cs" />
     <Compile Include="Models\BO\Parcel\MovementBO.cs" />
     <Compile Include="Models\BO\Parcel\ParcelBO.cs" />
@@ -673,16 +657,9 @@
     <Compile Include="Models\DAO\tblUserToRole.cs">
       <DependentUpon>EcoSendDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\View\Account\IdentityVM.cs" />
     <Compile Include="Models\View\Account\LoginVM.cs" />
     <Compile Include="Models\View\Account\UserVM.cs" />
-    <Compile Include="Models\View\Account\RegisteredPersonVM.cs" />
     <Compile Include="Models\View\Account\RegistrationVM.cs" />
-    <Compile Include="Models\View\Account\UserUploadVM.cs" />
-    <Compile Include="Models\View\Home\AirInfoVM.cs" />
-    <Compile Include="Models\View\Home\CategoryVM.cs" />
-    <Compile Include="Models\View\Home\ConditionVM.cs" />
-    <Compile Include="Models\View\Home\DataPoint.cs" />
     <Compile Include="Models\View\Parcel\LiqPayRequestVM.cs" />
     <Compile Include="Models\View\Parcel\MovementVM.cs" />
     <Compile Include="Models\View\Parcel\NewParcelVM.cs" />
@@ -690,12 +667,8 @@
     <Compile Include="Models\View\Parcel\ParcelVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Api\IAccountServ.cs" />
-    <Compile Include="Services\Api\ICacheServ.cs" />
-    <Compile Include="Services\Api\IHomeServ.cs" />
     <Compile Include="Services\Api\IParcelServ.cs" />
     <Compile Include="Services\Impl\AccountServ.cs" />
-    <Compile Include="Services\Impl\CacheServ.cs" />
-    <Compile Include="Services\Impl\HomeServ.cs" />
     <Compile Include="Services\Impl\ParcelServ.cs" />
   </ItemGroup>
   <ItemGroup>

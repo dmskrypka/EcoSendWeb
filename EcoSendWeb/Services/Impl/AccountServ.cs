@@ -4,7 +4,6 @@ using EcoSendWeb.Models.BO.Account;
 using EcoSendWeb.Models.DAO;
 using EcoSendWeb.Services.Api;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -84,33 +83,6 @@ namespace EcoSendWeb.Services.Impl
                 }
             }
         }
-
-        public IEnumerable<RegisteredPerson> GetRegisteredPersons()
-        {
-            using (EcoSendEntities db = new EcoSendEntities())
-            {
-                return MappingProfilesConfig.Mapper.Map<IEnumerable<RegisteredPerson>>(db.tblUsers);
-            }
-        }
-
-        //public IEnumerable<UserUpload> GetUsersUploads()
-        //{
-        //    using (AirDbEntities db = new AirDbEntities())
-        //    {
-        //        string query = @"SELECT TOP (100)
-        //                               rp.[pk_id] as UserId
-        //                        	  ,ui.[pk_id] as UploadId
-        //                        	  ,rp.[email] as Email
-        //                              ,[part_number_count] as UploadCount
-        //                              ,[upload_date] as UploadDate
-        //                        FROM [AirDb].[dbo].[tblUploadInfo] ui
-        //                        LEFT JOIN [AirDb].[dbo].[tblLoginInfo] li ON ui.fk_session = li.pk_session
-        //                        LEFT JOIN [AirDb].[dbo].[tblRegisteredPersons] rp ON rp.pk_id = li.fk_user_id
-        //                        ORDER BY ui.[upload_date] DESC";
-
-        //        return db.Database.SqlQuery<UserUpload>(query).ToList();
-        //    }
-        //}
 
         private string HashPassword(string strPassword)
         {

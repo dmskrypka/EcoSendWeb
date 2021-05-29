@@ -184,7 +184,8 @@ namespace EcoSendWeb.Services.Impl
                               FROM [dbo].[tblUserMovements] um
                               INNER JOIN [dbo].[tblParcels] p ON p.[pk_parcel] = um.[fk_parcel]
                               INNER JOIN [dbo].[tblPacks] p1 ON p1.[pk_pack] = p.[fk_pack]
-                              WHERE um.[fk_user] = '{userId}'";
+                              WHERE um.[fk_user] = '{userId}'
+                              ORDER BY um.[created_date] DESC";
 
                 return MappingProfilesConfig.Mapper.Map<IList<MovementBO>>(SqlQueryHelper.ExecuteSqlQuery(db.Database.Connection, query).Rows);
             }

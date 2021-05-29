@@ -40,8 +40,6 @@ namespace EcoSendWeb.App_Start
                 new InjectionProperty(nameof(ParcelController.LiqPayPrivateKey), ConfigurationManager.AppSettings["liqpay.private.key"])
             );
 
-            container.RegisterType<IHomeServ, HomeServ>(new ContainerControlledLifetimeManager());
-            container.RegisterType<ICacheServ, CacheServ>(new ContainerControlledLifetimeManager());
             container.RegisterType<IAccountServ, AccountServ>(new ContainerControlledLifetimeManager());
             container.RegisterType<IParcelServ, ParcelServ>(new ContainerControlledLifetimeManager());
 
