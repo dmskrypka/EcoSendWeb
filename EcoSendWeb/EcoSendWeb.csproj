@@ -459,9 +459,6 @@
     <Content Include="Models\DAO\EcoSendDb.edmx.diagram">
       <DependentUpon>EcoSendDb.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\Accelerator.pubxml" />
-    <None Include="Properties\PublishProfiles\gsairdataweb.net - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\Ventilato01.pubxml" />
     <Content Include="Scripts\cldr\event.js" />
     <Content Include="Scripts\cldr\supplemental.js" />
     <Content Include="Scripts\cldr\supplemental\test.txt" />
@@ -599,11 +596,7 @@
     <Compile Include="Helpers\LiqPay\LiqPayApiRequest.cs" />
     <Compile Include="Helpers\LiqPay\LiqPayApiResponse.cs" />
     <Compile Include="Helpers\SqlQueryHelper.cs" />
-    <Compile Include="Infrastructure\ActionResults\DtoActionResult.cs" />
-    <Compile Include="Infrastructure\Attributes\MultipleButtonAttribute.cs" />
-    <Compile Include="Infrastructure\Attributes\GetOrHeadAttribute.cs" />
     <Compile Include="Infrastructure\Attributes\NoClientCacheAttribute.cs" />
-    <Compile Include="Infrastructure\Attributes\ToolTipAttribute.cs" />
     <Compile Include="Infrastructure\Defs.cs" />
     <Compile Include="Infrastructure\Extensions\ExceptionExtesion.cs" />
     <Compile Include="Infrastructure\FormAuth.cs" />
@@ -676,16 +669,8 @@
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\web.config" />
-    <Content Include="Views\Home\Partials\AirInfoPartial.cshtml" />
-    <Content Include="Views\Home\Partials\EditableAirInfoPartial.cshtml" />
-    <Content Include="Views\Home\ProcessDataPage.cshtml" />
-    <Content Include="Views\Home\Partials\CategoryInfoPartial.cshtml" />
-    <Content Include="Views\Home\Partials\CategoryTablePartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Registration.cshtml" />
-    <Content Include="Views\Account\Partials\RegisteredPersonListPartial.cshtml" />
-    <Content Include="Views\Home\Partials\ConditionHistoryPartial.cshtml" />
-    <Content Include="Views\Account\Partials\UsersUploadListPartial.cshtml" />
     <Content Include="Views\Parcel\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Account\UserInfo.cshtml" />
@@ -709,6 +694,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

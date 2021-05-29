@@ -3,13 +3,13 @@
 }
 
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=yes" />
-    <meta name="description" content="Air Data Web" />
-    <meta name="language" content="cs" />
+    <meta name="description" content="EcoSend Web" />
+    <meta name="language" content="en" />
     @RenderSection("metatags", required: false)
     <title>@ViewBag.Title - EcoSend</title>
 
@@ -19,21 +19,13 @@
     @Styles.Render("~/Content/themes/eco/css")
     @Styles.Render("~/Content/slicknav/css")
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="~/Scripts/modernizr-2.8.3.js"></script>
     <script type="text/javascript" src="~/Scripts/require-setup.js"></script>
     <script type="text/javascript" src="~/Scripts/require.js"></script>
 
     <script type="text/javascript">
         window.config = {
-            locale: "cs-CZ"
+            locale: "en"
         };
     </script>
 
@@ -112,28 +104,9 @@
 
             global.Global.setup();
 
-            //handle closing web app
-                @*window.addEventListener("unload", function (event) {
-                     $.ajax({
-                            type: 'POST',
-                            url: "@this.Url.Action("LogoutUser", "Account")"
-                        });
-                });*@
-
-                //initPanelMenu = function (panelId) {
-                //    $('#' + panelId + ' > li').hover(function (e) {
-                //        $('#' + panelId + ' > li:hover > div').stop(true, true).fadeIn('slow');
-                //    }, function (e) {
-                //        $('#' + panelId + ' > li > div').fadeOut('slow');
-                //    });
-                //};
-
                 var ac = new site.Account("eco-submenu");
                 ac.onLogout("btn-logout", "@this.Url.Action("LogoutUser", "Account")");
-                ac.onShowList("btn-user-list", "User list info", "@this.Url.Action("ShowUserList", "Account")");
-                ac.onShowList("btn-user-upload", "Users uploads info", "@this.Url.Action("UsersUploads", "Account")");
 
-                //initPanelMenu("airnavigation");
             });
         });
 
