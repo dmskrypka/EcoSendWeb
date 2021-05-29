@@ -192,18 +192,6 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\slicknav.css" />
     <Content Include="Content\slicknav.min.css" />
-    <Content Include="Content\themes\eco\eco.ui.base.css">
-      <DependentUpon>eco.ui.base.less</DependentUpon>
-    </Content>
-    <Content Include="Content\themes\eco\eco.ui.base.min.css">
-      <DependentUpon>eco.ui.base.css</DependentUpon>
-    </Content>
-    <Content Include="Content\themes\eco\eco.ui.components.css">
-      <DependentUpon>eco.ui.components.less</DependentUpon>
-    </Content>
-    <Content Include="Content\themes\eco\eco.ui.components.min.css">
-      <DependentUpon>eco.ui.components.css</DependentUpon>
-    </Content>
     <Content Include="Content\themes\eco\eco.ui.defs.css">
       <DependentUpon>eco.ui.defs.less</DependentUpon>
     </Content>
@@ -354,10 +342,8 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="Content\themes\eco\eco.ui.defs.less" />
-    <Content Include="Content\themes\eco\eco.ui.base.less" />
     <Content Include="Content\themes\eco\eco.ui.forms.less" />
     <Content Include="Content\themes\eco\eco.ui.dialogs.less" />
-    <Content Include="Content\themes\eco\eco.ui.components.less" />
     <Content Include="Content\bootstrap-datepicker3.standalone.min.css.map" />
     <Content Include="Content\bootstrap-datepicker3.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker3.min.css.map" />

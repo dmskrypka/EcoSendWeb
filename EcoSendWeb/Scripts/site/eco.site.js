@@ -94,8 +94,7 @@ define(["require", "exports", "./eco.site.ui", "bootbox"], function (require, ex
     }());
     exports.Categories = Categories;
     var Account = /** @class */ (function () {
-        function Account(containerId) {
-            this.$container = $("#" + containerId);
+        function Account() {
         }
         Account.prototype.onLogout = function (btn, url) {
             var $btn = $("#" + btn);

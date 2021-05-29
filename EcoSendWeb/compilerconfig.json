@@ -4,10 +4,6 @@
     "inputFile": "Content/themes/eco/eco.ui.site.less"
   },
   {
-    "outputFile": "Content/themes/eco/eco.ui.base.css",
-    "inputFile": "Content/themes/eco/eco.ui.base.less"
-  },
-  {
     "outputFile": "Content/themes/eco/eco.ui.defs.css",
     "inputFile": "Content/themes/eco/eco.ui.defs.less"
   },
@@ -18,10 +14,6 @@
   {
     "outputFile": "Content/themes/eco/eco.ui.dialogs.css",
     "inputFile": "Content/themes/eco/eco.ui.dialogs.less"
-  },
-  {
-    "outputFile": "Content/themes/eco/eco.ui.components.css",
-    "inputFile": "Content/themes/eco/eco.ui.components.less"
   },
   {
     "outputFile": "Content/bootstrap/bootstrap.css",

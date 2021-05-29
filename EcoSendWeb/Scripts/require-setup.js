@@ -19,9 +19,6 @@
         "bootstrap": {
             "deps": ['jquery']
         },
-        "bootstrap-datepicker-sk": {
-            "deps": ['jquery', 'bootstrap-datepicker']
-        },
         "jquery-slicknav": {
             "deps": ['jquery']
         }
@@ -34,7 +31,6 @@
         "jquery-validate-globalize": "jquery.validate.globalize",
         "jquery-slicknav": "jquery.slicknav",
         "date": "globalize/date",
-        "number": "globalize/number",
-        "bootstrap-datepicker-sk": "locales/bootstrap-datepicker.sk.min"
+        "number": "globalize/number"
     }
 };

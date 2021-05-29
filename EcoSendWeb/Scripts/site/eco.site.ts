@@ -114,13 +114,6 @@ export class Categories {
 
 export class Account {
 
-    private $container: JQuery;
-
-    constructor(containerId: string) {
-
-        this.$container = $("#" + containerId);
-    }
-
     public onLogout(btn: string, url: string): void {
 
         const $btn: JQuery = $("#" + btn);

@@ -18,8 +18,6 @@ namespace EcoSendWeb.App_Start
                     "~/Content/slicknav.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/eco/css").Include(
-                    "~/Content/themes/eco/eco.ui.base.css",
-                    "~/Content/themes/eco/eco.ui.components.css",
                     "~/Content/themes/eco/eco.ui.forms.css",
                     "~/Content/themes/eco/eco.ui.dialogs.css",
                     "~/Content/themes/eco/eco.ui.site.css"));
