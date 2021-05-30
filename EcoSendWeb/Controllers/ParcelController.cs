@@ -128,7 +128,7 @@ namespace EcoSendWeb.Controllers
             }
             else
             {
-                throw new ArgumentNullException("View modes is empty");
+                throw new ArgumentNullException("View model is empty");
             }
         }
 
