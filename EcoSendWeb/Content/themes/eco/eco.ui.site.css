@@ -116,19 +116,16 @@ body ::-webkit-scrollbar-thumb:hover {
   color: white;
   margin-bottom: 16px;
 }
-#loginForm .eco-col-input,
-#registrationForm .eco-col-input {
+.eco-form .eco-col-input {
   width: 30%;
 }
 @media screen and (max-width: 1199px) {
-  #loginForm .eco-col-input,
-  #registrationForm .eco-col-input {
+  .eco-form .eco-col-input {
     width: 40%;
   }
 }
 @media screen and (max-width: 767px) {
-  #loginForm .eco-col-input,
-  #registrationForm .eco-col-input {
+  .eco-form .eco-col-input {
     width: 100%;
   }
 }

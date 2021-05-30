@@ -4,26 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="39c22dcb67664a6c82b0c916c1efc494" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="EcoSendModel.tblUserRole" Width="1.5" PointX="4.125" PointY="1.875" />
+      <Diagram DiagramId="39c22dcb67664a6c82b0c916c1efc494" Name="Diagram1" ZoomLevel="111">
+        <EntityTypeShape EntityType="EcoSendModel.tblUserRole" Width="1.5" PointX="0.5" PointY="4.125" />
         <EntityTypeShape EntityType="EcoSendModel.tblUserToRole" Width="1.5" PointX="1.125" PointY="1.5" />
         <AssociationConnector Association="EcoSendModel.FK_tblUserToRoles_tblUserRoles" />
-        <EntityTypeShape EntityType="EcoSendModel.tblRecipient" Width="1.5" PointX="4" PointY="7.75" />
-        <EntityTypeShape EntityType="EcoSendModel.tblPack" Width="1.5" PointX="7.375" PointY="0.875" />
-        <EntityTypeShape EntityType="EcoSendModel.tblUserMovement" Width="1.5" PointX="4.75" PointY="4.25" />
-        <EntityTypeShape EntityType="EcoSendModel.tblUser" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="EcoSendModel.tblRecipient" Width="1.5" PointX="4.75" PointY="7.125" />
+        <EntityTypeShape EntityType="EcoSendModel.tblPack" Width="1.5" PointX="9.5" PointY="5.25" />
+        <EntityTypeShape EntityType="EcoSendModel.tblUserMovement" Width="1.5" PointX="4.75" PointY="3.5" />
+        <EntityTypeShape EntityType="EcoSendModel.tblUser" Width="1.5" PointX="2.375" PointY="4" />
         <AssociationConnector Association="EcoSendModel.FK_tblRecipients_tblUsers" />
         <AssociationConnector Association="EcoSendModel.FK_tblUserMovements_tblUsers" />
         <AssociationConnector Association="EcoSendModel.FK_tblUserToRoles_tblUsers" />
-        <EntityTypeShape EntityType="EcoSendModel.tblParcel" Width="1.5" PointX="7.5" PointY="4.5" />
+        <EntityTypeShape EntityType="EcoSendModel.tblPayment" Width="1.5" PointX="7" PointY="1.25" />
+        <AssociationConnector Association="EcoSendModel.FK_tblPayments_tblUsers" />
+        <EntityTypeShape EntityType="EcoSendModel.tblParcel" Width="1.5" PointX="7.25" PointY="4.625" />
         <AssociationConnector Association="EcoSendModel.FK_tblParcels_tblPacks" />
         <AssociationConnector Association="EcoSendModel.FK_tblParcels_tblRecipients" />
         <AssociationConnector Association="EcoSendModel.FK_tblParcels_tblUsers" />
         <AssociationConnector Association="EcoSendModel.FK_tblParcels_tblUsers1" />
-        <AssociationConnector Association="EcoSendModel.FK_tblUserMovements_tblParcels" />
-        <EntityTypeShape EntityType="EcoSendModel.tblPayment" Width="1.5" PointX="9.75" PointY="5.5" />
         <AssociationConnector Association="EcoSendModel.FK_tblPayments_tblParcels" />
-        <AssociationConnector Association="EcoSendModel.FK_tblPayments_tblUsers" />
+        <AssociationConnector Association="EcoSendModel.FK_tblUserMovements_tblParcels" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

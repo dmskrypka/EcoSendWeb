@@ -7,57 +7,77 @@
 <h2>@ViewBag.Title</h2>
 <br />
 
-@using (Html.BeginForm("NewParcel", "Parcel", FormMethod.Post, new { role = "form", @class = "m-frm-login" }))
-{
-<div class="form-horizontal">
+<section class="eco-form">
+    @using (Html.BeginForm("NewParcel", "Parcel", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
+    {
 
-    @Html.ValidationSummary("", new { @class = "text-danger" })
+        @Html.ValidationSummary("", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.RecipientFirstName, new { @class = "col-xs-4" })
-        @Html.TextBoxFor(m => m.RecipientFirstName)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.RecipientFirstName, new { @class = "col-md-2 control-label" })
+            <div class="eco-col-input col-md-10">
+                @Html.TextBoxFor(m => m.RecipientFirstName, new { @class = "form-control" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.RecipientLastName, new { @class = "col-xs-4" })
-        @Html.TextBoxFor(m => m.RecipientLastName)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.RecipientLastName, new { @class = "col-md-2 control-label" })
+            <div class="eco-col-input col-md-10">
+                @Html.TextBoxFor(m => m.RecipientLastName, new { @class = "form-control" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.RecipientEmail, new { @class = "col-xs-4" })
-        @Html.TextBoxFor(m => m.RecipientEmail)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.RecipientEmail, new { @class = "col-md-2 control-label" })
+            <div class="eco-col-input col-md-10">
+                @Html.TextBoxFor(m => m.RecipientEmail, new { @class = "form-control" })
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.DestStreet, new { @class = "col-xs-4" })
-        @Html.TextBoxFor(m => m.DestStreet)
-    </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.DestCity, new { @class = "col-xs-4" })
-        @Html.TextBoxFor(m => m.DestCity)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DestStreet, new { @class = "col-md-2 control-label" })
+            <div class="eco-col-input col-md-10">
+                @Html.TextBoxFor(m => m.DestStreet, new { @class = "form-control" })
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.DestPostalCode, new { @class = "col-xs-4" })
-        @Html.TextBoxFor(m => m.DestPostalCode)
-    </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.DestCountry, new { @class = "col-xs-4" })
-        @Html.TextBoxFor(m => m.DestCountry)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DestCity, new { @class = "col-md-2 control-label" })
+            <div class="eco-col-input col-md-10">
+                @Html.TextBoxFor(m => m.DestCity, new { @class = "form-control" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.PackType, new { @class = "col-xs-4" })
-        @Html.DropDownListFor(x => Model.PackType, Model.PackTypes)
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DestPostalCode, new { @class = "col-md-2 control-label" })
+            <div class="eco-col-input col-md-10">
+                @Html.TextBoxFor(m => m.DestPostalCode, new { @class = "form-control" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Points, new { @class = "col-xs-4" })
-        @Html.TextBoxFor(x => Model.Points, new { @type = "number", @min = "0", @max = Model.Points })
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DestCountry, new { @class = "col-md-2 control-label" })
+            <div class="eco-col-input col-md-10">
+                @Html.TextBoxFor(m => m.DestCountry, new { @class = "form-control" })
+            </div>
+        </div>
 
-    <button type="submit" class="btn btn-parcel">CHECK</button>
-</div>
-}
+        <div class="form-group">
+            @Html.LabelFor(m => m.PackType, new { @class = "col-md-2 control-label" })
+            <div class="eco-col-input col-md-10">
+                @Html.DropDownListFor(x => Model.PackType, Model.PackTypes, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Points, new { @class = "col-md-2 control-label" })
+            <div class="eco-col-input col-md-10">
+                @Html.TextBoxFor(x => Model.Points, new { @type = "number", @min = "0", @max = Model.Points, @class = "form-control" })
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-parcel">CHECK</button>
+    }
+</section>

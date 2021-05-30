@@ -39,12 +39,14 @@ namespace EcoSendWeb.Controllers
             }
         }
 
+        [Route("parcels")]
         public ActionResult Index()
         {
             IList<ParcelVM> vm = MappingProfilesConfig.Mapper.Map<IList<ParcelVM>>(parcelServ.GetUserSendParcels((User as IExtendedPrincipal)?.Id ?? Guid.Empty));
             return View(vm);
         }
 
+        [Route("points")]
         public ActionResult Movements()
         {
             IList<MovementVM> vm = MappingProfilesConfig.Mapper.Map<IList<MovementVM>>(parcelServ.GetUserMovements((User as IExtendedPrincipal)?.Id ?? Guid.Empty));
@@ -60,6 +62,7 @@ namespace EcoSendWeb.Controllers
             return PartialView("ParcelInfoPartial", vm);
         }
 
+        [Route("new-parcel")]
         public ActionResult NewParcel()
         {
             NewParcelVM vm = new NewParcelVM
@@ -71,6 +74,7 @@ namespace EcoSendWeb.Controllers
             return View(vm);
         }
 
+        [Route("new-parcel")]
         [HttpPost]
         public ActionResult NewParcel(NewParcelVM vm)
         {
@@ -88,6 +92,7 @@ namespace EcoSendWeb.Controllers
             return View(vm);
         }
 
+        [Route("check-parcel-info")]
         public ActionResult CheckNewParcel()
         {
             if(Session[Defs.C_TEMPDATAKEY_NEWPARCEL] is NewParcelVM parcelVM)
@@ -138,6 +143,7 @@ namespace EcoSendWeb.Controllers
             return View(vm);
         }
 
+        [Route("liqpay-result")]
         [AllowAnonymous]
         [HttpPost]
         public ActionResult LiqPayResult(string data, string signature)
@@ -215,6 +221,7 @@ namespace EcoSendWeb.Controllers
             return PartialView("ParcelTablePartial", vm);
         }
 
+        [Route("user-parcels")]
         [Authorize(Roles = "worker")]
         public ActionResult UsersParcels()
         {

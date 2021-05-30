@@ -22,7 +22,7 @@ namespace EcoSendWeb.Models.DAO
         public System.DateTime created_date { get; set; }
         public Nullable<System.DateTime> result_date { get; set; }
     
-        public virtual tblParcel tblParcel { get; set; }
         public virtual tblUser tblUser { get; set; }
+        public virtual tblParcel tblParcel { get; set; }
     }
 }

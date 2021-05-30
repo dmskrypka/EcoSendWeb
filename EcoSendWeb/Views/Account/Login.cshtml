@@ -5,7 +5,7 @@
 
 <h2>@ViewBag.Title.</h2>
 
-<section id="loginForm">
+<section class="eco-form">
     @using (Ajax.BeginForm("UserLogin", "Account", new AjaxOptions { HttpMethod = "POST" }, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()

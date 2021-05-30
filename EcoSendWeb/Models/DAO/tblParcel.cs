@@ -17,8 +17,8 @@ namespace EcoSendWeb.Models.DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblParcel()
         {
-            this.tblUserMovements = new HashSet<tblUserMovement>();
             this.tblPayments = new HashSet<tblPayment>();
+            this.tblUserMovements = new HashSet<tblUserMovement>();
         }
     
         public int pk_parcel { get; set; }
@@ -35,15 +35,14 @@ namespace EcoSendWeb.Models.DAO
         public System.DateTime created_date { get; set; }
         public bool is_pack_recycled { get; set; }
         public Nullable<System.DateTime> received_date { get; set; }
-        public Nullable<System.DateTime> paid_date { get; set; }
     
         public virtual tblPack tblPack { get; set; }
         public virtual tblRecipient tblRecipient { get; set; }
         public virtual tblUser tblUser { get; set; }
         public virtual tblUser tblUser1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblUserMovement> tblUserMovements { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPayment> tblPayments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblUserMovement> tblUserMovements { get; set; }
     }
 }

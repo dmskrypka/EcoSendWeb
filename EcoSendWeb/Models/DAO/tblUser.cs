@@ -20,9 +20,9 @@ namespace EcoSendWeb.Models.DAO
             this.tblRecipients = new HashSet<tblRecipient>();
             this.tblUserMovements = new HashSet<tblUserMovement>();
             this.tblUserToRoles = new HashSet<tblUserToRole>();
+            this.tblPayments = new HashSet<tblPayment>();
             this.tblParcels = new HashSet<tblParcel>();
             this.tblParcels1 = new HashSet<tblParcel>();
-            this.tblPayments = new HashSet<tblPayment>();
         }
     
         public System.Guid pk_user { get; set; }
@@ -47,10 +47,10 @@ namespace EcoSendWeb.Models.DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblUserToRole> tblUserToRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblPayment> tblPayments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblParcel> tblParcels { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblParcel> tblParcels1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblPayment> tblPayments { get; set; }
     }
 }

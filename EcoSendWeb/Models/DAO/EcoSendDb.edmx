@@ -32,7 +32,6 @@
           <Property Name="created_date" Type="datetime" Nullable="false" />
           <Property Name="is_pack_recycled" Type="bit" Nullable="false" />
           <Property Name="received_date" Type="datetime" />
-          <Property Name="paid_date" Type="datetime" />
         </EntityType>
         <EntityType Name="tblPayments">
           <Key>
@@ -313,6 +312,11 @@
             <End Role="tblUser" EntitySet="tblUsers" />
             <End Role="tblUserToRole" EntitySet="tblUserToRoles" />
           </AssociationSet>
+          <EntitySet Name="tblPayments" EntityType="EcoSendModel.tblPayment" />
+          <AssociationSet Name="FK_tblPayments_tblUsers" Association="EcoSendModel.FK_tblPayments_tblUsers">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblPayment" EntitySet="tblPayments" />
+          </AssociationSet>
           <EntitySet Name="tblParcels" EntityType="EcoSendModel.tblParcel" />
           <AssociationSet Name="FK_tblParcels_tblPacks" Association="EcoSendModel.FK_tblParcels_tblPacks">
             <End Role="tblPack" EntitySet="tblPacks" />
@@ -330,18 +334,13 @@
             <End Role="tblUser" EntitySet="tblUsers" />
             <End Role="tblParcel" EntitySet="tblParcels" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblUserMovements_tblParcels" Association="EcoSendModel.FK_tblUserMovements_tblParcels">
-            <End Role="tblParcel" EntitySet="tblParcels" />
-            <End Role="tblUserMovement" EntitySet="tblUserMovements" />
-          </AssociationSet>
-          <EntitySet Name="tblPayments" EntityType="EcoSendModel.tblPayment" />
           <AssociationSet Name="FK_tblPayments_tblParcels" Association="EcoSendModel.FK_tblPayments_tblParcels">
             <End Role="tblParcel" EntitySet="tblParcels" />
             <End Role="tblPayment" EntitySet="tblPayments" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblPayments_tblUsers" Association="EcoSendModel.FK_tblPayments_tblUsers">
-            <End Role="tblUser" EntitySet="tblUsers" />
-            <End Role="tblPayment" EntitySet="tblPayments" />
+          <AssociationSet Name="FK_tblUserMovements_tblParcels" Association="EcoSendModel.FK_tblUserMovements_tblParcels">
+            <End Role="tblParcel" EntitySet="tblParcels" />
+            <End Role="tblUserMovement" EntitySet="tblUserMovements" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="tblUserRole">
@@ -429,10 +428,10 @@
           <NavigationProperty Name="tblRecipients" Relationship="EcoSendModel.FK_tblRecipients_tblUsers" FromRole="tblUser" ToRole="tblRecipient" />
           <NavigationProperty Name="tblUserMovements" Relationship="EcoSendModel.FK_tblUserMovements_tblUsers" FromRole="tblUser" ToRole="tblUserMovement" />
           <NavigationProperty Name="tblUserToRoles" Relationship="EcoSendModel.FK_tblUserToRoles_tblUsers" FromRole="tblUser" ToRole="tblUserToRole" />
+          <NavigationProperty Name="tblPayments" Relationship="EcoSendModel.FK_tblPayments_tblUsers" FromRole="tblUser" ToRole="tblPayment" />
           <NavigationProperty Name="tblParcels" Relationship="EcoSendModel.FK_tblParcels_tblUsers" FromRole="tblUser" ToRole="tblParcel" />
           <NavigationProperty Name="tblParcels1" Relationship="EcoSendModel.FK_tblParcels_tblUsers1" FromRole="tblUser" ToRole="tblParcel" />
-          <NavigationProperty Name="tblPayments" Relationship="EcoSendModel.FK_tblPayments_tblUsers" FromRole="tblUser" ToRole="tblPayment" />
-        </EntityType>
+          </EntityType>
         <Association Name="FK_tblRecipients_tblUsers">
           <End Type="EcoSendModel.tblUser" Role="tblUser" Multiplicity="0..1" />
           <End Type="EcoSendModel.tblRecipient" Role="tblRecipient" Multiplicity="*" />
@@ -469,6 +468,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="pk_payment" />
+          </Key>
+          <Property Name="pk_payment" Type="Guid" Nullable="false" />
+          <Property Name="fk_user" Type="Guid" Nullable="false" />
+          <Property Name="fk_parcel" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="success" Type="Boolean" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="result_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblUser" Relationship="EcoSendModel.FK_tblPayments_tblUsers" FromRole="tblPayment" ToRole="tblUser" />
+          <NavigationProperty Name="tblParcel" Relationship="EcoSendModel.FK_tblPayments_tblParcels" FromRole="tblPayment" ToRole="tblParcel" />
+        </EntityType>
+        <Association Name="FK_tblPayments_tblUsers">
+          <End Type="EcoSendModel.tblUser" Role="tblUser" Multiplicity="1" />
+          <End Type="EcoSendModel.tblPayment" Role="tblPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="pk_user" />
+            </Principal>
+            <Dependent Role="tblPayment">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="tblParcel">
           <Key>
             <PropertyRef Name="pk_parcel" />
@@ -487,13 +512,12 @@
           <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="is_pack_recycled" Type="Boolean" Nullable="false" />
           <Property Name="received_date" Type="DateTime" Precision="3" />
-          <Property Name="paid_date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblPack" Relationship="EcoSendModel.FK_tblParcels_tblPacks" FromRole="tblParcel" ToRole="tblPack" />
           <NavigationProperty Name="tblRecipient" Relationship="EcoSendModel.FK_tblParcels_tblRecipients" FromRole="tblParcel" ToRole="tblRecipient" />
           <NavigationProperty Name="tblUser" Relationship="EcoSendModel.FK_tblParcels_tblUsers" FromRole="tblParcel" ToRole="tblUser" />
           <NavigationProperty Name="tblUser1" Relationship="EcoSendModel.FK_tblParcels_tblUsers1" FromRole="tblParcel" ToRole="tblUser" />
-          <NavigationProperty Name="tblUserMovements" Relationship="EcoSendModel.FK_tblUserMovements_tblParcels" FromRole="tblParcel" ToRole="tblUserMovement" />
           <NavigationProperty Name="tblPayments" Relationship="EcoSendModel.FK_tblPayments_tblParcels" FromRole="tblParcel" ToRole="tblPayment" />
+          <NavigationProperty Name="tblUserMovements" Relationship="EcoSendModel.FK_tblUserMovements_tblParcels" FromRole="tblParcel" ToRole="tblUserMovement" />
         </EntityType>
         <Association Name="FK_tblParcels_tblPacks">
           <End Type="EcoSendModel.tblPack" Role="tblPack" Multiplicity="1" />
@@ -543,32 +567,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblUserMovements_tblParcels">
-          <End Type="EcoSendModel.tblParcel" Role="tblParcel" Multiplicity="1" />
-          <End Type="EcoSendModel.tblUserMovement" Role="tblUserMovement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblParcel">
-              <PropertyRef Name="pk_parcel" />
-            </Principal>
-            <Dependent Role="tblUserMovement">
-              <PropertyRef Name="fk_parcel" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tblPayment">
-          <Key>
-            <PropertyRef Name="pk_payment" />
-          </Key>
-          <Property Name="pk_payment" Type="Guid" Nullable="false" />
-          <Property Name="fk_user" Type="Guid" Nullable="false" />
-          <Property Name="fk_parcel" Type="Int32" Nullable="false" />
-          <Property Name="amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="success" Type="Boolean" Nullable="false" />
-          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="result_date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tblParcel" Relationship="EcoSendModel.FK_tblPayments_tblParcels" FromRole="tblPayment" ToRole="tblParcel" />
-          <NavigationProperty Name="tblUser" Relationship="EcoSendModel.FK_tblPayments_tblUsers" FromRole="tblPayment" ToRole="tblUser" />
-        </EntityType>
         <Association Name="FK_tblPayments_tblParcels">
           <End Type="EcoSendModel.tblParcel" Role="tblParcel" Multiplicity="1" />
           <End Type="EcoSendModel.tblPayment" Role="tblPayment" Multiplicity="*" />
@@ -581,15 +579,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblPayments_tblUsers">
-          <End Type="EcoSendModel.tblUser" Role="tblUser" Multiplicity="1" />
-          <End Type="EcoSendModel.tblPayment" Role="tblPayment" Multiplicity="*" />
+        <Association Name="FK_tblUserMovements_tblParcels">
+          <End Type="EcoSendModel.tblParcel" Role="tblParcel" Multiplicity="1" />
+          <End Type="EcoSendModel.tblUserMovement" Role="tblUserMovement" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblUser">
-              <PropertyRef Name="pk_user" />
+            <Principal Role="tblParcel">
+              <PropertyRef Name="pk_parcel" />
             </Principal>
-            <Dependent Role="tblPayment">
-              <PropertyRef Name="fk_user" />
+            <Dependent Role="tblUserMovement">
+              <PropertyRef Name="fk_parcel" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -667,10 +665,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblPayments">
+            <EntityTypeMapping TypeName="EcoSendModel.tblPayment">
+              <MappingFragment StoreEntitySet="tblPayments">
+                <ScalarProperty Name="result_date" ColumnName="result_date" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="success" ColumnName="success" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="fk_parcel" ColumnName="fk_parcel" />
+                <ScalarProperty Name="fk_user" ColumnName="fk_user" />
+                <ScalarProperty Name="pk_payment" ColumnName="pk_payment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblParcels">
             <EntityTypeMapping TypeName="EcoSendModel.tblParcel">
               <MappingFragment StoreEntitySet="tblParcels">
-                <ScalarProperty Name="paid_date" ColumnName="paid_date" />
                 <ScalarProperty Name="received_date" ColumnName="received_date" />
                 <ScalarProperty Name="is_pack_recycled" ColumnName="is_pack_recycled" />
                 <ScalarProperty Name="created_date" ColumnName="created_date" />
@@ -685,19 +695,6 @@
                 <ScalarProperty Name="fk_sender" ColumnName="fk_sender" />
                 <ScalarProperty Name="fk_pack" ColumnName="fk_pack" />
                 <ScalarProperty Name="pk_parcel" ColumnName="pk_parcel" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblPayments">
-            <EntityTypeMapping TypeName="EcoSendModel.tblPayment">
-              <MappingFragment StoreEntitySet="tblPayments">
-                <ScalarProperty Name="result_date" ColumnName="result_date" />
-                <ScalarProperty Name="created_date" ColumnName="created_date" />
-                <ScalarProperty Name="success" ColumnName="success" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="fk_parcel" ColumnName="fk_parcel" />
-                <ScalarProperty Name="fk_user" ColumnName="fk_user" />
-                <ScalarProperty Name="pk_payment" ColumnName="pk_payment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

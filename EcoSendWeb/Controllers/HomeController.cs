@@ -11,12 +11,14 @@ namespace EcoSendWeb.Controllers
             return View();
         }
 
+        [Route("about")]
         [AllowAnonymous]
         public ActionResult About()
         {
             return View();
         }
 
+        [Route("contact")]
         [AllowAnonymous]
         public ActionResult Contact()
         {

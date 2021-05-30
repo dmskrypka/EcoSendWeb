@@ -31,7 +31,7 @@ namespace EcoSendWeb.Models.DAO
         public virtual DbSet<tblPack> tblPacks { get; set; }
         public virtual DbSet<tblUserMovement> tblUserMovements { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
-        public virtual DbSet<tblParcel> tblParcels { get; set; }
         public virtual DbSet<tblPayment> tblPayments { get; set; }
+        public virtual DbSet<tblParcel> tblParcels { get; set; }
     }
 }
