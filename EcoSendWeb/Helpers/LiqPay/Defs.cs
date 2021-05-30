@@ -2,13 +2,13 @@
 {
     public enum LiqpayActions
     {
-        Pay,
-        Hold,
-        PaySplit,
-        Subscribe,
-        PayDonate,
-        Auth,
-        Regular
+        pay,
+        hold,
+        paysplit,
+        subscribe,
+        paydonate,
+        auth,
+        regular
     }
 
     public enum LiqpayPayTypes

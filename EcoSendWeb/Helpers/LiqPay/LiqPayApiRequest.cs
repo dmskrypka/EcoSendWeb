@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace EcoSendWeb.Helpers.LiqPay
 {
@@ -14,6 +15,7 @@ namespace EcoSendWeb.Helpers.LiqPay
         public int Version { get; set; }
 
         [JsonProperty("action")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public LiqpayActions Action { get; set; }
 
         [JsonProperty("currency")]
@@ -27,5 +29,8 @@ namespace EcoSendWeb.Helpers.LiqPay
 
         [JsonProperty("result_url")]
         public string ResultUrl { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
     }
 }

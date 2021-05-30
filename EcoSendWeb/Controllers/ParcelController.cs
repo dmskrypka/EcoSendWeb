@@ -143,7 +143,6 @@ namespace EcoSendWeb.Controllers
             return View(vm);
         }
 
-        [Route("liqpay-result")]
         [AllowAnonymous]
         [HttpPost]
         public ActionResult LiqPayResult(string data, string signature)
@@ -151,10 +150,8 @@ namespace EcoSendWeb.Controllers
             if(liqPayApiHelper.ValidateResponse(data, signature))
             {
                 LiqPayApiResponse liqPayApiResponse = liqPayApiHelper.DecodeApiResponse(data);
-                parcelServ.SavePaymentResult(liqPayApiResponse.OrderId, liqPayApiResponse.Status == LiqpayStatuses.Success);
+                parcelServ.SavePaymentResult(liqPayApiResponse.OrderId, true);
 
-                if (liqPayApiResponse.Status == LiqpayStatuses.Success)
-                {
                     Guid? userId = parcelServ.SubtractMovement(liqPayApiResponse.OrderId);
                     if (userId.HasValue)
                     {
@@ -164,9 +161,6 @@ namespace EcoSendWeb.Controllers
                     ViewBag.Message = "Thanks!";
 
                     return View("LiqPaySuccess");
-                }
-
-                ViewBag.Message = $"{liqPayApiResponse.ErrorCode}<br/>{liqPayApiResponse.ErrorDescription}";
             }
             else
             {

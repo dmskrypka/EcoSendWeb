@@ -23,11 +23,12 @@ namespace EcoSendWeb.Helpers.LiqPay
                 PublicKey = publicKey,
                 Amount = price,
                 Version = 3,
-                Action = LiqpayActions.Pay,
+                Action = LiqpayActions.pay,
                 Currency = "UAH",
                 Description = $"Parcel: {parcelId}, Price: {price}",
                 OrederId = $"{Guid.NewGuid().ToString().Substring(0, 10)}_{parcelId:D4}_{points}",
-                ResultUrl = resultUrl
+                ResultUrl = resultUrl,
+                Language = "en"
             };
 
             string strJson = JsonConvert.SerializeObject(request);

@@ -68,7 +68,7 @@
                     }
                     else
                     {
-                        <td>@parcel.PaidDate</td>
+                        <td>@(parcel.PaidDate.HasValue ? parcel.PaidDate.Value.ToString("dd-MM-yyyy HH:mm") : "")</td>
                     }
                 </tr>
             }
