@@ -130,7 +130,7 @@ namespace EcoSendWeb.Services.Impl
                 if (db.tblParcels.FirstOrDefault(x => x.pk_parcel == parcelId && !x.received_date.HasValue) is tblParcel parcel)
                 {
                     parcel.received_date = DateTime.Now;
-                    parcel.is_pack_recycled = true;
+                    parcel.is_pack_recycled = isPackRecycled;
 
                     db.SaveChanges();
                 }
@@ -149,7 +149,7 @@ namespace EcoSendWeb.Services.Impl
                         parcel.confirmed_date = DateTime.Now;
                         parcel.fk_employee = employeeId;
 
-                        if (db.tblRecipients.FirstOrDefault(x => x.pk_recipient == parcel.fk_recipient && x.fk_user.HasValue) is tblRecipient recipient)
+                        if (parcel.is_pack_recycled && db.tblRecipients.FirstOrDefault(x => x.pk_recipient == parcel.fk_recipient && x.fk_user.HasValue) is tblRecipient recipient)
                         {
                             db.tblUserMovements.Add(new tblUserMovement
                             {
